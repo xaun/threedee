@@ -28,30 +28,41 @@
 To load an audio sample into the Web Audio API, we can use an XMLHttpRequest and process the results with context.decodeAudioData. This all happens asynchronously and doesn’t block the main UI thread:
 
 ```
+// Link to audio file.
+var url  = 'assets/ConfessToMe.mp3';
+
+/* --- set up web audio --- */
+// Create the context,
+var context = new webkitAudioContext();
+// ...and the source.
+var source = context.createBufferSource();
+// Connect it to the destination so you can hear it.
+source.connect(context.destination);
+
+
+/* --- load up that buffer ---  */
+// Basic start to ajax! (I say basic, yet i don't know it well.)
 var request = new XMLHttpRequest();
+// Open the request...?
 request.open('GET', url, true);
+// I don't even know.
 request.responseType = 'arraybuffer';
 
-// Decode asynchronously
+// Once the request has completed... do this
 request.onload = function() {
-  context.decodeAudioData(request.response, function(theBuffer) {
-    buffer = theBuffer;
-  }, onError);
-}
+  context.decodeAudioData(request.response, function(response) {
+    /* --- play the sound AFTER we've gotten the buffer loaded --- */
+    // set the buffer to the response we just received.
+    source.buffer = response;
+    // And off we go! .start(0) should play asap.
+    source.start(0);
+  }, function() {
+    console.error('The request failed.'); } );
+};
+
+// Now that the request has been defined, actually make the request. (send it)
 request.send();
 ```
-
-Once you’ve loaded your buffer, you can create a source node (AudioBufferSourceNode) for it, connect the source node into your audio graph, and call start(0) on the source node. To stop a sound, call stop(0) on the source node. Note that both of these function calls require a time in the coordinate system of the current audio context :
-
-```
-function playSound(buffer) {
-  var source = context.createBufferSource();
-  source.buffer = buffer;
-  source.connect(context.destination);
-  source.start(0);
-}
-```
-
 
 
 
