@@ -18,7 +18,7 @@
 ### Destination nodes
 - Audio outputs and offline processing buffers
 
-
+![basicaudionodepath](http://orm-chimera-prod.s3.amazonaws.com/1234000001552/images/waap_0103.png)
 
 
 -------------------------------------------------------------------------------
