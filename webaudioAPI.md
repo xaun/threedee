@@ -21,12 +21,14 @@
 #### Simple example of node flow
 ![basicaudionodepath](http://orm-chimera-prod.s3.amazonaws.com/1234000001552/images/waap_0103.png)
 
+
 - - -
 
 ## loading and play sounds
 To load an audio sample into the Web Audio API, we can use an XMLHttpRequest and process the results with context.decodeAudioData. This all happens asynchronously and doesn’t block the main UI thread:
 
-`var request = new XMLHttpRequest();
+```
+var request = new XMLHttpRequest();
 request.open('GET', url, true);
 request.responseType = 'arraybuffer';
 
@@ -36,18 +38,31 @@ request.onload = function() {
     buffer = theBuffer;
   }, onError);
 }
-request.send();`
+request.send();
+```
 
 Once you’ve loaded your buffer, you can create a source node (AudioBufferSourceNode) for it, connect the source node into your audio graph, and call start(0) on the source node. To stop a sound, call stop(0) on the source node. Note that both of these function calls require a time in the coordinate system of the current audio context :
 
-`function playSound(buffer) {
+```
+function playSound(buffer) {
   var source = context.createBufferSource();
   source.buffer = buffer;
   source.connect(context.destination);
   source.start(0);
-}`
+}
+```
 
--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+- - -
 # Welcome To Markdown
 ## THis is a less important heading.
 This is a paragraph of text in *Markdown*.
