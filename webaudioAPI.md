@@ -1,3 +1,5 @@
+# Playing Audio Files & Real-time Frequency Analysis
+- - -
 ## <audio> html5 tag limitation
 - No precise timing controls
 - Very low limit for the number of sounds played at once
@@ -5,6 +7,7 @@
 - No ability to apply real-time effects
 - No way to analyze sounds
 
+- - -
 ## types of webaudio nodes
 ### Source nodes
 - Sound sources such as audio buffers, live audio inputs, <audio> tags, oscillators, and JS processors
@@ -21,57 +24,115 @@
 #### Simple example of node flow
 ![basicaudionodepath](http://orm-chimera-prod.s3.amazonaws.com/1234000001552/images/waap_0103.png)
 
+- - -
+## Audio-Definition: Waveform
+A waveform is an image that represents an audio signal or recording. It shows the changes in amplitude over a certain amount of time. The amplitude of the signal is measured on the y-axis (vertically), while time is measured on the x-axis (horizontally).
 
 - - -
+## Audio-Definition: Sample Rate / Sample Frequency
+Sampling rate or sampling frequency defines the number of samples per second (or per other unit) taken from a continuous signal to make a discrete or digital signal. For time-domain signals like the waveforms for sound (and other audio-visual content types), frequencies are measured in in hertz (Hz) or cycles per second.
 
-## loading and play sounds
-To load an audio sample into the Web Audio API, we can use an XMLHttpRequest and process the results with context.decodeAudioData. This all happens asynchronously and doesn’t block the main UI thread:
+- - -
+## Nyquist's Theorum / Principle
+The Nyquist–Shannon sampling theorem (Nyquist principle) states that perfect reconstruction of a signal is possible when the sampling frequency is greater than twice the maximum frequency of the signal being sampled. For example, if an audio signal has an upper limit of 20,000 Hz (the approximate upper limit of human hearing), a sampling frequency greater than 40,000 Hz (40 kHz) will avoid aliasing and allow theoretically perfect reconstruction.
 
+- - -
+## Audio-Definition: Frequency | Wavelength | Pitch
+Audio waves with a longer wavelength don't arrive (at your ear, for example) as often (frequently) as the shorter waves. This aspect of a sound - how often a wave peak goes by, is called frequency by scientists and engineers. They measure it in hertz, which is how many wave peaks go by in one second. People can hear sounds that range from about 20 to about 17,000 hertz.
+Lower frequency sounds have a longer wavelength, and therefor travel further.
+
+- - -
+## Audio-Definition: Bitrate
+Bitrate is a measure of data throughput in a given amount of time. Simply put, it's the number of bits that are processed every second. For example, the audio data in an MP3 file which has been encoded with a constant bitrate (CBR) of 128kbps will be processed at 128,000 bits every second.
+
+- - -
+## Audio Context
+In order to start using the API, we must first create an AudioContext. Think of this as a **canvas for sound**. It’s a container for all the playback and manipulation of audio we’re going to be doing. We create it by simply doing this:
 ```
-// Link to audio file.
-var url  = 'assets/ConfessToMe.mp3';
-
-/* --- set up web audio --- */
-// Create the context,
 var context = new webkitAudioContext();
-// ...and the source.
-var source = context.createBufferSource();
-// Connect it to the destination so you can hear it.
-source.connect(context.destination);
-
-
-/* --- load up that buffer ---  */
-// Basic start to ajax! (I say basic, yet i don't know it well.)
-var request = new XMLHttpRequest();
-// Open the request...?
-request.open('GET', url, true);
-// I don't even know.
-request.responseType = 'arraybuffer';
-
-// Once the request has completed... do this
-request.onload = function() {
-  context.decodeAudioData(request.response, function(response) {
-    /* --- play the sound AFTER we've gotten the buffer loaded --- */
-    // set the buffer to the response we just received.
-    source.buffer = response;
-    // And off we go! .start(0) should play asap.
-    source.start(0);
-  }, function() {
-    console.error('The request failed.'); } );
-};
-
-// Now that the request has been defined, actually make the request. (send it)
-request.send();
+    // We use the "webkit" prefix as the API isn't a standard yet
 ```
 
+- - -
+## Creating an Analyser Node
+Creates an AnalyserNode.
+`var analyser = context.createAnalyser();`
+
+- - -
+## fftSize
+The fftSize basically determines the number of bins(or bands [audio term]), this is used for the frequency-domain analysis. It must be to the power of 2, and a minimum of 32.
+It determines how large the frequency range one single bin(band) will cover.
 
 
+`analyser.fftSize = 32;`
 
+- - -
+## Creating an Audio Object
+This is fairly self explainitory:
+```
+// creating an Audio object
+  var audio0 = new Audio();
+  audio0.src = 'assets/ConfessToMe.mp3';
+  audio0.controls = true;
+  audio0.autoplay = false;
+  audio0.loop = true;
+```
 
+- - -
+## Creating the Source, and connecting the nodes.
 
+```
+var source;
+  // Creating a Source Node and passing our audio0 object into it
+  source = context.createMediaElementSource(audio0);
+  // connecting the source to the analyser
+  source.connect(analyser);
+  // connecting the source & analyser to the speakers (destination)
+  analyser.connect(context.destination);
+```
 
+- - -
+## getFrequencyByteData
+Copies the current frequency data into the passed unsigned byte array. If the array has fewer elements than the frequencyBinCount, the excess elements will be dropped.
 
+- - -
+## Making the function that makes it all happen
 
+```
+  // Uint8Array = Unsigned Integer 8bit Array
+  // Values between 0-255 will be pushed into this array
+  // Which represent -1 to +1 (in audio terms)
+  var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+
+  // Function that receives & returns the frequencyData
+  var getFrequencies = function() {
+    // Copies the current frequency data into the passed unsigned byte array.
+    analyser.getByteFrequencyData(frequencyData);
+
+    return frequencyData;
+  }
+```
+
+- - -
+## Play & Pause
+
+```
+$(".stop").on('click', function() {
+    audio0.pause();
+    audio0.currentTime = 0;
+    // Stops the frequency data from being returned.
+    clearInterval(samplerID);
+  });
+
+  var samplerID = null;
+  $(".play").on('click', function() {
+    audio0.play();
+    samplerID = window.setInterval(function() {
+      // Calls getFrequencies, and sets an interval rate.
+      console.log(getFrequencies());
+    }, 100);
+  });
+```
 
 - - -
 # Welcome To Markdown
