@@ -9,16 +9,16 @@
 
 
 ## types of webaudio nodes
-### Source nodes
+#### Source nodes
 - Sound sources such as audio buffers, live audio inputs, <audio> tags, oscillators, and JS processors
 
-### Modification nodes
+#### Modification nodes
 - Filters, convolvers, panners, JS processors, etc.
 
-### Analysis nodes
+#### Analysis nodes
 - Analyzers and JS processors
 
-### Destination nodes
+#### Destination nodes
 - Audio outputs and offline processing buffers
 
 #### Simple example of node flow
@@ -33,7 +33,7 @@ A waveform is an image that represents an audio signal or recording. It shows th
 Sampling rate or sampling frequency defines the number of samples per second (or per other unit) taken from a continuous signal to make a discrete or digital signal. For time-domain signals like the waveforms for sound (and other audio-visual content types), frequencies are measured in in hertz (Hz) or cycles per second.
 
 
-## Nyquist's Theorum / Principle
+## Audio-Definition: Nyquist's Theorum / Principle
 The Nyquist–Shannon sampling theorem (Nyquist principle) states that perfect reconstruction of a signal is possible when the sampling frequency is greater than twice the maximum frequency of the signal being sampled. For example, if an audio signal has an upper limit of 20,000 Hz (the approximate upper limit of human hearing), a sampling frequency greater than 40,000 Hz (40 kHz) will avoid aliasing and allow theoretically perfect reconstruction.
 
 
@@ -134,24 +134,6 @@ $(".stop").on('click', function() {
   });
 ```
 
-- - -
-# Welcome To Markdown
-## THis is a less important heading.
-This is a paragraph of text in *Markdown*.
 
-This is another paragraph. We can italicis with _underscores_ or *asterisks*
 
-We can bold with __double underscore__ or **double asterisks**
 
-> After 3 days without programming , life becomes menaingless.
-
-- Groucho
-- Harpo
-- Chico
-- Zeppo
-
-This is [clickable link text] (http://example,com).
-![robot](http://pocketscientists.com/wp-content/uploads/2012/10/robot1.png)
-
-Tody we learened about the `<blink>` tag
-Hide full text
