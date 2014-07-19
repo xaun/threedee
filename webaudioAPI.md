@@ -1,6 +1,6 @@
 # Playing Audio Files & Real-time Frequency Analysis
 
-## <audio> html5 tag limitation
+## `<audio>` html5 tag limitation
 - No precise timing controls
 - Very low limit for the number of sounds played at once
 - No way to reliably pre-buffer a sound
