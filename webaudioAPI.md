@@ -143,8 +143,8 @@ $(".stop").on('click', function() {
 
 ## Setting up the Canvas
 ```
-`<canvas id="canvas" width="512" height="256" ></canvas>`
-`<style>`
+<canvas id="canvas" width="512" height="256" ></canvas>
+<style>
   #canvas {
     margin-left: auto;
     margin-right: auto;
@@ -157,7 +157,7 @@ $(".stop").on('click', function() {
   #start, #stop {
     font-size: 16pt;
   }
-`</style>`
+</style>
 ```
 
 ## Setting the rendering context / canvas context
