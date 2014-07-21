@@ -10,7 +10,7 @@
 
 ## types of webaudio nodes
 #### Source nodes
-- Sound sources such as audio buffers, live audio inputs, <audio> tags, oscillators, and JS processors
+- Sound sources such as audio buffers, live audio inputs, <audio> tags, oscillators, and JS processors(ScriptProcessorNode).
 
 #### Modification nodes
 - Filters, convolvers, panners, JS processors, etc.
@@ -63,8 +63,9 @@ Creates an AnalyserNode.
 The fftSize basically determines the number of bins(or bands [audio term]), this is used for the frequency-domain analysis. It must be to the power of 2, and a minimum of 32.
 It determines how large the frequency range one single bin(band) will cover.
 
-
 `analyser.fftSize = 32;`
+
+The actual number of bins (bands) in this example would be 16. As it is divided by 2.
 
 
 ## Creating an Audio Object
@@ -117,6 +118,17 @@ Copies the current frequency data into the passed unsigned byte array. If the ar
 ## Play & Pause
 
 ```
+var samplerID = null;
+$(".play").on('click', function() {
+  audio0.play();
+
+  // using this setInterval function is a way to display results to the console for viewing. When sending this data for visual processing a ScriptProccessorNode will be used instead.
+  samplerID = window.setInterval(function() {
+    // Calls getFrequencies, and sets an interval rate.
+    console.log(getFrequencies());
+  }, 100);
+});
+
 $(".stop").on('click', function() {
     audio0.pause();
     audio0.currentTime = 0;
@@ -124,15 +136,96 @@ $(".stop").on('click', function() {
     clearInterval(samplerID);
   });
 
-  var samplerID = null;
-  $(".play").on('click', function() {
-    audio0.play();
-    samplerID = window.setInterval(function() {
-      // Calls getFrequencies, and sets an interval rate.
-      console.log(getFrequencies());
-    }, 100);
-  });
 ```
+
+
+# 2D canvas visualiser
+
+## Setting up the Canvas
+```
+`<canvas id="canvas" width="512" height="256" ></canvas>`
+`<style>`
+  #canvas {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: black;
+  }
+  #controls, h1 {
+    text-align: center;
+  }
+  #start, #stop {
+    font-size: 16pt;
+  }
+`</style>`
+```
+
+## Setting the rendering context / canvas context
+
+```
+// 2D rendering context for a drawing surface of a `<canvas>` element.
+var ctx = $("#canvas")[0].getContext("2d");
+```
+
+
+## Script Processor Node
+This interface is an AudioNode which can generate, process, or analyse audio directly using JavaScript.
+
+```
+var javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
+```
+- Often named javascriptNode.
+
+This node also need to be connected to the analyserNode and the destination:
+```
+analyserNode.connect(javascriptNode);
+javascriptNode.connect(audioContext.destination);
+```
+
+## Drawing Function
+
+```
+var canvasWidth  = 512;
+var canvasHeight = 256;
+var drawTimeDomain = function() {
+  clearCanvas();
+  for (var i = 0; i < amplitudeArray.length; i++) {
+    var value = amplitudeArray[i] / 256;
+    var y = canvasHeight - (canvasHeight * value) - 1;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(i, y, 1, 1);
+  }
+};
+
+var clearCanvas = function() {
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+};
+```
+
+## Start audio & draw
+
+```
+// Play sound & visualise
+$("#start").on('click', function() {
+  audio0.play();
+  // An event listener which is called periodically for audio processing.
+  javascriptNode.onaudioprocess = function () {
+    // Get the Time Domain data for this sample
+    analyserNode.getByteTimeDomainData(amplitudeArray);
+    // Draw..
+    requestAnimFrame(drawTimeDomain);
+  }
+});
+```
+
+
+
+
+
+
+
+
+
 
 
 
