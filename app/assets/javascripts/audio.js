@@ -30,30 +30,30 @@ var Audio = {
   setupAudioNodes: function () {
     Audio.tuna = new Tuna(Audio.audioContext);
     Audio.phaser = new Audio.tuna.Phaser({
-      rate: 3,                     //0.01 to 8 is a decent range, but higher values are possible
-      depth: 1,                     //0 to 1
-      feedback: 0.7,                 //0 to 1+
-      stereoPhase: 30,               //0 to 180
-      baseModulationFrequency: 900,  //500 to 1500
+      rate: 0.01,                     //0.01 to 8 is a decent range, but higher values are possible
+      depth: 0,                     //0 to 1
+      feedback: 0,                 //0 to 1+
+      stereoPhase: 0,               //0 to 180
+      baseModulationFrequency: 500,  //500 to 1500
       bypass: 1
     });
     Audio.overdrive = new Audio.tuna.Overdrive({
-      outputGain: 0.5,         //0 to 1+
-      drive: 0.1,              //0 to 1
-      curveAmount: 1,          //0 to 1
-      algorithmIndex: 1,       //0 to 5, selects one of our drive algorithms
+      outputGain: 0,         //0 to 1+
+      drive: 0,              //0 to 1
+      curveAmount: 0,          //0 to 1
+      algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
       bypass: 1
     });
     Audio.tremolo = new Audio.tuna.Tremolo({
-      intensity: 1,    //0 to 1
-      rate: 8,         //0.001 to 8
+      intensity: 0,    //0 to 1
+      rate: 0,         //0.001 to 8
       stereoPhase: 0,    //0 to 180
       bypass: 1
     });
     Audio.chorus = new Audio.tuna.Chorus({
-      rate: 5.5,         //0.01 to 8+
-      feedback: 0.9,     //0 to 1+
-      delay: 1.0000,     //0 to 1
+      rate: 0,         //0.01 to 8+
+      feedback: 0,     //0 to 1+
+      delay: 0,     //0 to 1
       bypass: 1          //the value 1 starts the effect as bypassed, 0 or 1
     });
     Audio.sourceNode = Audio.audioContext.createBufferSource();
@@ -123,7 +123,6 @@ $(document).ready(function () {
       Audio.playSound(Audio.audioData);
     }
   });
-
   // Stop audio
   $("#stop").on('click', function (e) {
     e.preventDefault();
@@ -145,16 +144,34 @@ $(document).ready(function () {
       console.log('phaser off')
     }
   });
-
   // Rate
   $('#rate').on('change', function () {
-    Audio.phaser.rate = $(this).val()
+    Audio.phaser.rate = $(this).val();
+    console.log(Audio.phaser.rate)
   });
-
   // Depth
+  $('#depth').on('change', function () {
+    Audio.phaser.depth = $(this).val();
+    console.log(Audio.phaser.depth);
+  })
+  // Feedback
+  $('#feedback').on('change', function () {
+    Audio.phaser.feedback = $(this).val();
+    console.log(Audio.phaser.feedback);
+  });
+  // Stereophase
+  $('#stereophase').on('change', function () {
+    Audio.phaser.stereoPhase = $(this).val();
+    console.log(Audio.phaser.stereoPhase);
+  });
+  // BaseModulationFrequency
+  $('#basemodulationfrequency').on('change', function () {
+    Audio.phaser.baseModulationFrequency = $(this).val();
+    console.log(Audio.phaser.baseModulationFrequency);
+  })
 
-
-  // Overdrive FX on/off
+  //-------------- OVERDRIVE FX -------------------//
+  // ON/OFF
   $('#overdrive-onoff').on('click', function() {
     if (Audio.overdriveOn == false) {
       Audio.overdrive.bypass = 0;
@@ -180,6 +197,21 @@ $(document).ready(function () {
       console.log('tremolo off');
     }
   });
+  // Intensity
+  $('#intensity').on('change', function () {
+    Audio.tremolo.intensity = $(this).val();
+    console.log(Audio.tremolo.intensity);
+  });
+  // Rate
+  $('#rate').on('change', function () {
+    Audio.tremolo.rate = $(this).val();
+    console.log(Audio.tremolo.rate);
+  });
+  // Stereo-Phase
+  $('#stereo-phase').on('change', function () {
+    Audio.tremolo.stereoPhase = $(this).val();
+    console.log(Audio.tremolo.stereoPhase);
+  });
 
   // Chorus FX on/off
   $('#chorus-onoff').on('click', function () {
@@ -190,11 +222,10 @@ $(document).ready(function () {
     } else {
       Audio.chorus.bypass = 1
       Audio.chorusOn = false;
-      console.log('chorus on');
+      console.log('chorus off');
     }
   });
 
-  $('#rate ')
 });
 
 
