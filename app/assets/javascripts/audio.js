@@ -153,7 +153,6 @@ $(document).ready(function () {
 
   // Depth
 
-
   // Overdrive FX on/off
   $('#overdrive-onoff').on('click', function() {
     if (Audio.overdriveOn == false) {
@@ -166,6 +165,24 @@ $(document).ready(function () {
       console.log('overdrive off');
     }
   });
+
+  $('#outputGain').on('change', function () {
+    Audio.overdrive.outputGain = $(this).val()
+  });
+
+  $('#drive').on('change', function () {
+    Audio.overdrive.drive = $(this).val()
+  });
+
+  $('#curveAmount').on('change', function () {
+    Audio.overdrive.curveAmount = $(this).val()
+  });
+
+  $('#algorithmIndex').on('change', function () {
+    Audio.overdrive.algorithmIndex = $(this).val()
+  });
+
+
 
   //-------------- TREMOLO FX ---------------------//
   // ON/OFF
@@ -190,11 +207,24 @@ $(document).ready(function () {
     } else {
       Audio.chorus.bypass = 1
       Audio.chorusOn = false;
-      console.log('chorus on');
+      console.log('chorus off');
     }
   });
 
-  $('#rate ')
+  // Rate
+  $('#rate').on('change', function () {
+    Audio.phaser.rate = $(this).val()
+  });
+
+  // Feedback
+  $('#feedback').on('change', function () {
+    Audio.chorus.feedback = $(this).val()
+  });
+
+  // Delay
+  $('#delay').on('change', function () {
+    Audio.chorus.delay = $(this).val()
+  });
 });
 
 
