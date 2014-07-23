@@ -1,0 +1,55 @@
+body {
+  overflow-x: hidden;
+}
+
+.file-panel {
+  padding:20px;
+  width: 250px;
+  background: #bab6d8;
+  /*border: #29216d 1px solid;*/
+  position:absolute;
+  top:10px;
+  left:-291px;
+}
+
+a.file-tab {
+  background:transparent url(https://cdn1.iconfinder.com/data/icons/squarenav/480/arrow_right_square_black-32.png) no-repeat scroll 0 0;
+  border-width: 1px 1px 1px 0;
+  display:block;
+  height:32px;
+  left:51px;
+  bottom:21px;
+  position:relative;
+  float:right;
+  text-indent:-9999px;
+  width:32px;
+  outline:none;
+}
+
+.vis-panel {
+  padding:20px;
+  width: 250px;
+  background: #bab6d8;
+  /*border: #29216d 1px solid;*/
+  position:absolute;
+  top:10px;
+  right:-291px;
+}
+
+.vis-panel, .file-tab h3 {
+  text-align: center;
+}
+
+a.vis-tab {
+  background:transparent url(https://cdn1.iconfinder.com/data/icons/squarenav/480/arrow_left_square_black-32.png) no-repeat scroll 0 0;
+  border-width: 1px 1px 1px 0;
+  display:block;
+  height:32px;
+  right:51px;
+  bottom:21px;
+  position:relative;
+  float:left;
+  text-indent:-9999px;
+  width:32px;
+  outline:none;
+}
