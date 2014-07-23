@@ -1,61 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>rt_freqAnalysis</title>
-</head>
-<body>
-  <div class="index-container">
-    <div id="drop-zone"></div>
-    <p id="upload" class="hidden">
-      <label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label>
-    </p>
+<div class="index-container">
+  <div id="drop-zone"></div>
+  <p id="upload" class="hidden">
+    <label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label>
+  </p>
 
-    <div id="player">
-      <audio controls="controls">
-        <source src="/audio/MakeYouWanna.mp3" type="audio/mpeg"></source>
-      </audio>
+  <div id="player">
+    <audio controls="controls">
+      <source src="/audio/MakeYouWanna.mp3" type="audio/mpeg"></source>
+    </audio>
+  </div>
+</div><!--///////////// close index-container ////////-->
+
+<div id="sidebar-container">
+  <div class="sound-panel">
+    <a class="sound-tab" href="#">
+      <span>S</span>
+      <span>o</span>
+      <span>u</span>
+      <span>n</span>
+      <span>d</span>
+    </a>
+    <div id="mp3-drop">
+
     </div>
   </div>
 
-  <div id="sidebar-container">
-    <div class="sound-panel">
-      <a class="sound-tab" href="#">
-        <span>S</span>
-        <span>o</span>
-        <span>u</span>
-        <span>n</span>
-        <span>d</span>
-      </a>
-      <div id="mp3-drop">
+  <div class="vis-panel">
+    <a class="vis-tab" href="#">
+      <span>V</span>
+      <span>i</span>
+      <span>s</span>
+      <span>u</span>
+      <span>a</span>
+      <span>l</span>
+    </a>
 
-      </div>
-    </div>
-
-    <div class="vis-panel">
-      <a class="vis-tab" href="#">
-        <span>V</span>
-        <span>i</span>
-        <span>s</span>
-        <span>u</span>
-        <span>a</span>
-        <span>l</span>
-      </a>
-
-      <div id="form-wrap">
-        <p>
-          Hard charged and convinced it's contagious<br>
-          Put away in a box like a beast<br>
-          Sweat salt watch my back<br>
-          Like a crime boss<br>
-          My life's blood siphoned out of me<br>
-          Take my power and trade it away<br>
-          Now I live in Kryptonite<br>
-          Do what I must to have it again<br>
-          And I'll explode the planet tonight
-        </p>
-      </div>
+    <div id="form-wrap">
+      <p>
+        Hard charged and convinced it's contagious<br>
+        Put away in a box like a beast<br>
+        Sweat salt watch my back<br>
+        Like a crime boss<br>
+        My life's blood siphoned out of me<br>
+        Take my power and trade it away<br>
+        Now I live in Kryptonite<br>
+        Do what I must to have it again<br>
+        And I'll explode the planet tonight
+      </p>
     </div>
   </div>
-</body>
-</html>
+</div><!--///////////// close sidebar-container ////////-->
+<div id="visualiser"></div><!--///////////close visualiser ////////-->
+
