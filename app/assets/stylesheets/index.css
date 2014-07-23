@@ -1,38 +1,42 @@
 .container, #player {
   text-align: center;
 }
+
 #canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
     background-color: black;
 }
-h1 {
-  text-align: center;
-}
-#drop-zone {
+
+#drop-zone, #soundcloud-url {
   border: 3px dashed #CFCFCF;
-  width: 80%;
+  width: 50%;
   /*margin-left: 15%;*/
   /*margin-right: 15%;*/
   /*min-height: 300px; */
   height: 80%;
   /*margin: 20px auto;*/
   display: none;
-  position: fixed;
-  left: 10%;
+  position: fixed ;
+  left: 25%;
+  top: 10%;
   /*right: 10%;*/
   z-index: 10;
 }
+
 #drop-zone.hover {
  border: 10px dashed #0c0;
 }
+
 #drop-zone img {
   display: block; margin: 10px auto;
 }
+
 #drop-zone p {
   margin: 10px; font-size: 14px;
 }
+
 #drop-zone #upl_success{
   margin: 75px auto;
   font-weight: bold;
@@ -42,9 +46,11 @@ h1 {
   width: 75%;
   padding: 1em;
 }
+
 .fail {
   background: #c00; padding: 2px; color: #fff;
 }
+
 .hidden {
   display: none !important;
 }
@@ -55,4 +61,12 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%); /* Yep! */
   width: 48%;
+}
+
+#soundcloud-url {
+
+}
+
+#soundcloud-url input {
+  width: 370px;
 }

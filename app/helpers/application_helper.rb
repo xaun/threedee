@@ -1,19 +1,20 @@
 module ApplicationHelper
   def smartnav
-    links = '<div id="nav">'
+    links = "<div id='nav'><div id='inner-nav'>"
     if @current_user.try(:is_admin)
-      links += "<li><h2>" + link_to('View users', users_path) + "/<h2></li>"
+      links += "<div class='view-users-link'>" + link_to('View users', users_path) + "</div>"
     end
 
     if @current_user.present?
-      links += "<li><h2>"
+      links += "<div class='log-out-link'>"
       links += link_to('Logout ' + @current_user.username, login_path, :data => {:method => :delete, :confirm => 'Really logout?'})
-      links += "</h2></li>"
+      links += "</div>"
     else
-      links += "<li><h2>#{ link_to('Sign up', new_user_path) }</h2></li>"
-      links += "<li><h2>#{ link_to('Sign in', login_path) }</h2></li>"
+      links += "<div id='sign-in-link'>#{ link_to('Sign in', login_path) }</div>"
+      links += "<div id='sign-up-link'>#{ link_to('Sign up', new_user_path) }</div>"
     end
 
+    links + '</div>'
     links + '</div>'
   end
 

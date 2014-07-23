@@ -1,10 +1,13 @@
 <div class="index-container">
-  <div id="drop-zone-parent">
-    <div id="drop-zone"></div>
-  </div>
+  <div id="drop-zone"></div>
   <p id="upload" class="hidden">
     <label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label>
   </p>
+
+  <div id="soundcloud-url">
+    <p>Find a track on http://www.soundcloud.com and paste the URL below in the following format: http://soundcloud.com/artist/track</p>
+    <input type="url" placeholder="Paste Soundcloud URL here (http://soundcloud.com/artist/track)">
+  </div>
 
   <div id="player">
     <audio controls="controls">
@@ -23,6 +26,7 @@
       <span>d</span>
     </a>
     <div id="mp3-drop-menu">MP3 DROP</div>
+    <div id="soundcloud-menu">SOUNDCLOUD URL</div>
   </div>
 
   <div class="vis-panel">
