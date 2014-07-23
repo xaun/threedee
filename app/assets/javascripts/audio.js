@@ -49,7 +49,7 @@ $(document).ready(function () {
 
   // ------------- FILE DRAG & DROP ------------------- //
   // reference source for code = http://html5demos.com/dnd-upload#view-source
-  var holder = document.getElementById('drop-zone'),
+  var dropZone = document.getElementById('drop-zone'),
     tests = {
       filereader: typeof FileReader != 'undefined',
       dnd: 'draggable' in document.createElement('span'),
@@ -73,7 +73,7 @@ $(document).ready(function () {
   function previewfile(file) {
       var reader = new FileReader();
       reader.onload = function (event) {
-        holder.innerHTML += '<p id="upl_success">Succesfully uploaded' + " " + file.name;
+        dropZone.innerHTML += '<p id="upl_success">Succesfully uploaded' + " " + file.name;
       };
 
       // Pauses current audio object, and resets the time to 0, creates a new Audio object, assigns the reader.result to the new audio object.
@@ -118,9 +118,9 @@ $(document).ready(function () {
 
   // Drag & drop listeners
   if (tests.dnd) {
-    holder.ondragover = function () { this.className = 'hover'; return false; };
-    holder.ondragend = function () { this.className = ''; return false; };
-    holder.ondrop = function (e) {
+    dropZone.ondragover = function () { this.className = 'hover'; return false; };
+    dropZone.ondragend = function () { this.className = ''; return false; };
+    dropZone.ondrop = function (e) {
       this.className = '';
       e.preventDefault();
       readfiles(e.dataTransfer.files);
