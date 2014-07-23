@@ -1,25 +1,25 @@
 $(document).ready(function() {
 
-  // ----------------------------------File Tab---------------------------------------------- //
-  var fileTab = {
+  // ---------------------------sound Tab--------------------------- //
+  var soundTab = {
 
     speed:300,
-    containerWidth:$('.file-panel').outerWidth(),
-    containerHeight:$('.file-panel').outerHeight(),
-    tabWidth:$('.file-tab').outerWidth(),
+    containerWidth:$('.sound-panel').outerWidth(),
+    containerHeight:$('.sound-panel').outerHeight(),
+    tabWidth:$('.sound-tab').outerWidth(),
 
 
     init:function(){
-      $('.file-panel').css('height',fileTab.containerHeight + 'px');
+      $('.sound-panel').css('height',soundTab.containerHeight + 'px');
 
-      $('a.file-tab').click(function(event){
-        if ($('.file-panel').hasClass('open')) {
-            $('.file-panel')
-            .animate({left:'-' + fileTab.containerWidth}, fileTab.speed)
+      $('a.sound-tab').click(function(event){
+        if ($('.sound-panel').hasClass('open')) {
+            $('.sound-panel')
+            .animate({left:'-' + soundTab.containerWidth}, soundTab.speed)
             .removeClass('open');
         } else {
-            $('.file-panel')
-            .animate({left:'0'},  fileTab.speed)
+            $('.sound-panel')
+            .animate({left:'0'},  soundTab.speed)
             .addClass('open');
         }
         event.preventDefault();
@@ -27,9 +27,9 @@ $(document).ready(function() {
     }
   };
 
-  fileTab.init();
+  soundTab.init();
 
-  // ----------------------------------Visualiser Tab---------------------------------------------- //
+  // -----------------------Visualiser Tab------------------------- //
   var visTab = {
 
     speed:300,

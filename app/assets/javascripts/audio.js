@@ -49,7 +49,7 @@ $(document).ready(function () {
 
   // ------------- FILE DRAG & DROP ------------------- //
   // reference source for code = http://html5demos.com/dnd-upload#view-source
-  var holder = document.getElementById('holder'),
+  var holder = document.getElementById('drop-zone'),
     tests = {
       filereader: typeof FileReader != 'undefined',
       dnd: 'draggable' in document.createElement('span'),
