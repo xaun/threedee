@@ -61,11 +61,26 @@ $(document).ready(function() {
 
   visTab.init();
 
+  //------------------ MENU JS --------------------//
   $('#mp3-drop-menu').on('click', function () {
+    if ($('#soundcloud-url').is(':visible')) {
+      $('#soundcloud-url').hide();
+    };
     if ($('#drop-zone').is(':hidden')) {
       $('#drop-zone').show();
     } else {
       $('#drop-zone').hide();
+    };
+  });
+
+  $('#soundcloud-menu').on('click', function () {
+    if ($('#drop-zone').is(':visible')) {
+      $('#drop-zone').hide();
+    };
+    if ($('#soundcloud-url').is(':hidden')) {
+      $('#soundcloud-url').show();
+    } else {
+      $('#soundcloud-url').hide();
     };
   });
 
