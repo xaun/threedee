@@ -7,19 +7,22 @@
     display: block;
     background-color: black;
 }
-#controls, h1 {
+h1 {
   text-align: center;
 }
-#start, #stop {
-  font-size: 16pt;
-}
 #drop-zone {
-  border: 10px dashed #CFCFCF;
-  width: 50%;
+  border: 3px dashed #CFCFCF;
+  width: 80%;
+  /*margin-left: 15%;*/
+  /*margin-right: 15%;*/
   /*min-height: 300px; */
-  height: 200px;
-  margin: 20px auto;
+  height: 80%;
+  /*margin: 20px auto;*/
   display: none;
+  position: fixed;
+  left: 10%;
+  /*right: 10%;*/
+  z-index: 10;
 }
 #drop-zone.hover {
  border: 10px dashed #0c0;
@@ -39,15 +42,17 @@
   width: 75%;
   padding: 1em;
 }
-progress {
-  width: 100%;
-}
-progress:after {
-  content: '%';
-}
 .fail {
   background: #c00; padding: 2px; color: #fff;
 }
 .hidden {
   display: none !important;
+}
+
+#player {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Yep! */
+  width: 48%;
 }
