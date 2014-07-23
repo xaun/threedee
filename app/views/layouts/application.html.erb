@@ -7,8 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="container">
+    <header>
+      <%== smartnav %>
+    </header>
+
+
   <h1>3D Visualiser</h1>
   <%= yield %>
-
+</div><!--/////////////////////////close container //////////-->
 </body>
 </html>
