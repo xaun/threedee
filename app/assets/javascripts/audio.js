@@ -16,7 +16,7 @@ var Sound = {
   },
   createAudioObject: function () {
     Sound.audio0 = new Audio();
-    Sound.audio0.src = 'assets/ConfessToMe.mp3';
+    Sound.audio0.src = '/audio/MakeYouWanna.mp3';
     Sound.audio0.controls = true;
     Sound.audio0.autoplay = false;
     Sound.audio0.loop = true;
