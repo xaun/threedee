@@ -19,6 +19,7 @@
   /*min-height: 300px; */
   height: 200px;
   margin: 20px auto;
+  display: none;
 }
 #drop-zone.hover {
  border: 10px dashed #0c0;

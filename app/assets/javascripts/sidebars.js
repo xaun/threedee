@@ -60,4 +60,14 @@ $(document).ready(function() {
   };
 
   visTab.init();
+
+  $('#mp3-drop-menu').on('click', function () {
+    if ($('#drop-zone').is(':hidden')) {
+      $('#drop-zone').show();
+    } else {
+      $('#drop-zone').hide();
+    };
+  });
+
+
 });
