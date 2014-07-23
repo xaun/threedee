@@ -1,8 +1,5 @@
-.controls, h1 {
+.container, #player {
   text-align: center;
-}
-.controls  {
-  font-size: 16pt;
 }
 #canvas {
     margin-left: auto;
@@ -16,23 +13,23 @@
 #start, #stop {
   font-size: 16pt;
 }
-#holder {
+#drop-zone {
   border: 10px dashed #CFCFCF;
-  width: 400px;
+  width: 50%;
   /*min-height: 300px; */
   height: 200px;
   margin: 20px auto;
 }
-#holder.hover {
+#drop-zone.hover {
  border: 10px dashed #0c0;
 }
-#holder img {
+#drop-zone img {
   display: block; margin: 10px auto;
 }
-#holder p {
+#drop-zone p {
   margin: 10px; font-size: 14px;
 }
-#holder #upl_success{
+#drop-zone #upl_success{
   margin: 75px auto;
   font-weight: bold;
   text-align: center;
