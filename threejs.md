@@ -33,13 +33,14 @@ http://aerotwist.com/tutorials/getting-started-with-three-js/`
       scene.add(camera);`
 
 ##2. Object
-  ###Geometry
+  ###Geometry - Many different geometries
 
-  ###Material
+  ###Material - Add material - many different types check three.js
 
-  ###Add to to scene
+  ###Add to to scene - scene.addObject(x`)
 
 ##3.Lights
+  ###a. Create lights
   `// Create a light, set its position, and add it to the scene.
       var light = new THREE.PointLight(0xfffff);
       light.position.set(-100,200,100);
@@ -52,7 +53,9 @@ http://aerotwist.com/tutorials/getting-started-with-three-js/`
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
       });`
-
+  ###b. Creating shadows
+      - use spotlight - spotLight.castShadow = true, whole bunch of other
+      - add .receiveShadow to object and/or .castShadow to true
 
 ##4.Animate
 
@@ -66,3 +69,25 @@ http://aerotwist.com/tutorials/getting-started-with-three-js/`
         camera.aspect = WIDTH / HEIGHT;
         camera.updateProjectionMatrix();
       });`
+
+###Creating custom polygons
+1. Create geometry object
+`var geom = new THREE.Geometry();`
+
+2. Create vertices
+     `var v1 = new THREE.Vector3(0,0,0);
+      var v2 = new THREE.Vector3(0,500,0);
+      var v3 = new THREE.Vector3(0,500,500);
+      var v4 = new THREE.Vector3(0,1000,1000);
+      var v5 = new THREE.Vector3(0,500,500);`
+3. Push into geo object
+      `geom.vertices.push(v1);
+      geom.vertices.push(v2);
+      geom.vertices.push(v3);`
+4.
+      geom.faces.push( new THREE.Face3( 0, 1, 2 ) );
+      geom.computeFaceNormals();
+
+      object = new THREE.Mesh( geom, new THREE.MeshNormalMaterial() );
+
+      scene.add(object);`
