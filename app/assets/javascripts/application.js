@@ -15,3 +15,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require_tree .
+
+
+window.onscroll = function () {
+  window.scrollTo(0,0);
+};

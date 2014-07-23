@@ -1,5 +1,7 @@
 <div class="index-container">
-  <div id="drop-zone"></div>
+  <div id="drop-zone-parent">
+    <div id="drop-zone"></div>
+  </div>
   <p id="upload" class="hidden">
     <label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label>
   </p>
@@ -9,7 +11,7 @@
       <source src="/audio/MakeYouWanna.mp3" type="audio/mpeg"></source>
     </audio>
   </div>
-</div><!--///////////// close index-container ////////-->
+</div>
 
 <div id="sidebar-container">
   <div class="sound-panel">
@@ -20,9 +22,7 @@
       <span>n</span>
       <span>d</span>
     </a>
-    <div id="mp3-drop">
-
-    </div>
+    <div id="mp3-drop-menu">MP3 DROP</div>
   </div>
 
   <div class="vis-panel">
@@ -34,12 +34,14 @@
       <span>a</span>
       <span>l</span>
     </a>
-      <button id="sunflare">S</button>
-      <button id="lines">L</button>
-      <button id="emitter">E</button>
-      <button id="galaxy">G</button>
-      <button id="cubeGrid">C</button>
-      <button id="flat">F</button>
+
+    <button id="sunflare">S</button>
+    <button id="lines">L</button>
+    <button id="emitter">E</button>
+    <button id="galaxy">G</button>
+    <button id="cubeGrid">C</button>
+    <button id="flat">F</button>
+
     <div id="form-wrap">
       <p>
         Hard charged and convinced it's contagious<br>
@@ -54,6 +56,9 @@
       </p>
     </div>
   </div>
+</div>
+
 </div><!--///////////// close sidebar-container ////////-->
 <div id="visualiser"></div><!--///////////close visualiser ////////-->
+
 
