@@ -38,5 +38,11 @@ $(document).ready(function () {
     lines(getTimeDomain, getFrequencies);
   });
 
+  $('#cubeGrid').on('click',function (event){
+    event.preventDefault();
+    stopPrevious();
+    cubeGrid(getTimeDomain, getFrequencies);
+  });
+
 });
 
