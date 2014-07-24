@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= reuqire three.min.js
+//= require three.min.js
 //= require visualiserHandler.js
 //= require_tree .
 

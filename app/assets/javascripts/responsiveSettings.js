@@ -17,22 +17,18 @@ $(document).ready(function () {
     }
   };
 
-  $( "#linesSpeedControls").hide();
-  $( "#sunflareControls").hide();
-  $( "#cubeGridControls").hide();
+  $( "#controllsList form").hide();
 
   $( "#visualisers_list" ).on('change', function(){
     console.log('changing');
-    if ($( "#visualisers_list option:selected" ).val() == 'lines'){$('#linesSpeedControls').show(); $( "#sunflareControls").hide();}
-    if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){$('#sunflareControls').show(); $( "#linesSpeedControls").hide(); loadSunflare();}
-    if ($( "#visualisers_list option:selected" ).val() == 'emitter'){$( "#linesSpeedControls").hide(); $( "#sunflareControls").hide();}
-  })
+    if ($( "#visualisers_list option:selected" ).val() == 'lines'){ $( "#controllsList form").hide(); $('#linesSpeedControls').show([400], 'swing'); }
+    if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show(); }
+    if ($( "#visualisers_list option:selected" ).val() == 'emitter'){ $( "#controllsList form").hide();}
+  });
+  $('#sunflareSubmit').on('click',function(){
+      console.log(currentAnimationId);
+      stopPrevious();
+      sunFlare(getTimeDomain, getFrequencies);
+    });
 });
 
-var loadSunflare = function (){
-    $('#sunflareSubmit').on('click',function(){
-    console.log(currentAnimationId);
-    stopPrevious();
-    sunFlare(getTimeDomain, getFrequencies);
-    });
-  };
