@@ -6,6 +6,12 @@ $(document).ready(function () {
   var getFrequencies = function() {
     return Sound.getFrequencyDomain();
   };
+
+  var getValues = function(id) {
+    _.each($(id + ' input'), function(ele) {
+      console.log($(ele).val())
+    })
+  }
   var currentAnimationId;
 
   function stopPrevious () {
@@ -19,14 +25,28 @@ $(document).ready(function () {
       console.log('no id');
     }
   };
+  // Initialise settings
   $("#controllsList form").hide();
   $("#sunflareControls").show();
+  // Listener for dropdown
   $( "#visualisers_list" ).on('change', function(){
-    if ($( "#visualisers_list option:selected" ).val() == 'lines'){ $( "#controllsList form").hide(); $('#linesSpeedControls').show([400], 'swing'); }
-    if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show([400], 'swing'); }
-    if ($( "#visualisers_list option:selected" ).val() == 'cubeGrid'){ $( "#controllsList form").hide(); $('#cubeGridControls').show([400], 'swing');}
+    console.log($( "#visualisers_list option:selected" ).val());
+    switch ($( "#visualisers_list option:selected" ).val()) {
+      case "lines":
+        $( "#controllsList form").hide();
+        $('#linesSpeedControls').show([400], 'swing');
+        break;
+      case "sunflare":
+        $( "#controllsList form").hide();
+        $('#sunflareControls').show([400], 'swing');
+        break;
+      case "cubeGrid":
+        $( "#controllsList form").hide();
+        $('#cubeGridControls').show([400], 'swing');
+        break;
+    }
   });
-
+  // Listeners for creating
   $('#sunflareSubmit').on('click',function (event){
     event.preventDefault();
     stopPrevious();
@@ -41,7 +61,6 @@ $(document).ready(function () {
 
 
   $('#cubeGridSubmit').on('click',function (event){
-    console.log(event);
     event.preventDefault();
     stopPrevious();
     cubeGrid(getTimeDomain, getFrequencies);
@@ -102,6 +121,20 @@ $(document).ready(function () {
 
   $('#sunflare-size').on('change', function(){
     currentVisualiser.sphereSize = parseFloat($('#sunflare-size').val())/100;
+  });
+
+  // Save listeners
+  $(".save-button").on('click', function(event){
+    event.preventDefault();
+    switch (event.target.id) {
+      case "sunflare-save":
+        getValues('#sunflare')
+        break;
+      case "lines-save":
+        break;
+      case "cubegrid-save":
+        break;
+    }
   });
 
 });

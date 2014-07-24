@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require jquery-ui
  *= require_self
  */
 
@@ -26,6 +27,11 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   font-family: 'Inconsolata';
+}
+
+#gh-btn {
+  position: absolute;
+  z-index: 10;
 }
 
 #nav, #inner-nav {

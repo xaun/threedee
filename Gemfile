@@ -30,6 +30,8 @@ gem 'soundcloud'
 
 gem 'rails_12factor', group: :production
 
+gem 'jquery-ui-rails'
+
 group :development do
   gem 'pry-rails'
   gem 'better_errors'

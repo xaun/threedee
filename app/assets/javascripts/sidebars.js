@@ -29,7 +29,6 @@ $(document).ready(function() {
   };
 
   soundTab.init();
-
   // -----------------------Visualiser Tab------------------------- //
   var visTab = {
 
@@ -69,9 +68,9 @@ $(document).ready(function() {
       $('#soundcloud-url').hide();
     };
     if ($('#drop-zone').is(':hidden')) {
-      $('#drop-zone').show();
+      $('#drop-zone').toggle('fold');
     } else {
-      $('#drop-zone').hide();
+      $('#drop-zone').toggle('fold');
     };
   });
 
@@ -80,9 +79,9 @@ $(document).ready(function() {
       $('#drop-zone').hide();
     };
     if ($('#soundcloud-url').is(':hidden')) {
-      $('#soundcloud-url').show();
+      $('#soundcloud-url').toggle('fold');
     } else {
-      $('#soundcloud-url').hide();
+      $('#soundcloud-url').toggle('fold');
     };
   });
 
