@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   function stopPrevious () {
     try{
-      cancelAnimationFrame(currentAnimationId);
+      cancelAnimationFrame(currentVisualiser.currentAnimationId);
       $('#visualiser-canvas').empty();
     } catch(err) {
       console.log('no id');
@@ -28,17 +28,15 @@ $(document).ready(function () {
 
   $('#sunflareSubmit').on('click',function (event){
     event.preventDefault();
-    console.log(currentAnimationId);
     stopPrevious();
-    sunFlare(getTimeDomain, getFrequencies);
+    sunFlare2(getTimeDomain, getFrequencies);
   });
 
   $('#linesSubmit').on('click',function (event){
-      event.preventDefault();
-      console.log(currentAnimationId);
-      stopPrevious();
-      sunFlare2(getTimeDomain, getFrequencies);
+    event.preventDefault();
+    stopPrevious();
+    lines(getTimeDomain, getFrequencies);
+  });
 
-    });
 });
 
