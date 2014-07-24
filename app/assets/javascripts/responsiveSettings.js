@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   function stopPrevious () {
     try{
-      cancelAnimationFrame(currentAnimationId);
+      cancelAnimationFrame(currentVisualiser.currentAnimationId);
       $('#visualiser-canvas').empty();
     } catch(err) {
       console.log('no id');
@@ -22,23 +22,21 @@ $(document).ready(function () {
   $( "#visualisers_list" ).on('change', function(){
     console.log('changing');
     if ($( "#visualisers_list option:selected" ).val() == 'lines'){ $( "#controllsList form").hide(); $('#linesSpeedControls').show([400], 'swing'); }
-    if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show(); }
-    if ($( "#visualisers_list option:selected" ).val() == 'emitter'){ $( "#controllsList form").hide();}
+    if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show([400], 'swing'); }
+    if ($( "#visualisers_list option:selected" ).val() == 'cubeGrid'){ $( "#controllsList form").hide(); $('#cubeGridControls').show([400], 'swing');}
   });
 
   $('#sunflareSubmit').on('click',function (event){
     event.preventDefault();
-    console.log(currentAnimationId);
     stopPrevious();
-    sunFlare(getTimeDomain, getFrequencies);
+    sunFlare2(getTimeDomain, getFrequencies);
   });
 
   $('#linesSubmit').on('click',function (event){
-      event.preventDefault();
-      console.log(currentAnimationId);
-      stopPrevious();
-      sunFlare2(getTimeDomain, getFrequencies);
+    event.preventDefault();
+    stopPrevious();
+    lines(getTimeDomain, getFrequencies);
+  });
 
-    });
 });
 
