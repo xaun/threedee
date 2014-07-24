@@ -1,4 +1,5 @@
-function sunFlare(getTimeDomain, getFrequencies) {// Put the main code
+function sunFlare(getTimeDomain, getFrequencies) {
+  // Put the main code
   // // to keep track of the mouse position
   // var mouseX = 0, mouseY = 0;
   var vertexShader = "varying vec2 vUv;attribute float displacement; varying vec3 vNormal;varying float vertD;void main() {vertD = displacement;vUv = uv;vNormal = normal;vec3 newPosition =position + normal *vec3(displacement);gl_Position = projectionMatrix *modelViewMatrix *vec4(newPosition, 1.0);}";
