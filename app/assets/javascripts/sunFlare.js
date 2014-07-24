@@ -103,7 +103,7 @@ function sunFlare(getTimeDomain, getFrequencies) {
     // renderer.shadowMapEnabled = true;
     renderer.setSize( window.innerWidth, window.innerHeight );
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-    $('#container').append(renderer.domElement);
+    $('#visualiser-canvas').append(renderer.domElement);
     scene.add( mesh );
 
     // function beatDetection() {
