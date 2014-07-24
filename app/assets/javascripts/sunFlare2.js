@@ -46,7 +46,6 @@ function sunFlare2(getTimeDomain, getFrequencies) {
     currentAnimationId: null
   };
   //set visualiser to sunFlare
-  currentVisualiser = sunFlare;
   var init = function() {
     //3d creation
     // create a scene
@@ -156,5 +155,6 @@ function sunFlare2(getTimeDomain, getFrequencies) {
   // Begin
   init();
   render();
+  currentVisualiser = sunFlare;
 
 };
