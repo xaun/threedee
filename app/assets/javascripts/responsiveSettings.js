@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var getTimeDomain = function() {
+  var getTimeDomain = function() {
     return Sound.getTimeDomain();
   };
 
@@ -7,13 +7,15 @@ $(document).ready(function () {
     return Sound.getFrequencyDomain();
   };
   var currentAnimationId;
-  var currentVisualiser;
 
   function stopPrevious () {
     try{
+      console.log(currentVisualiser);
+      console.log(currentVisualiser.currentAnimationId);
       cancelAnimationFrame(currentVisualiser.currentAnimationId);
-      $('#visualiser-canvas').empty();
+      console.log($('#visualiser-canvas').empty());
     } catch(err) {
+      console.log(err);
       console.log('no id');
     }
   };
@@ -38,7 +40,8 @@ $(document).ready(function () {
     lines(getTimeDomain, getFrequencies);
   });
 
-  $('#cubeGrid').on('click',function (event){
+  $('#cubeGridSubmit').on('click',function (event){
+    console.log(event);
     event.preventDefault();
     stopPrevious();
     cubeGrid(getTimeDomain, getFrequencies);

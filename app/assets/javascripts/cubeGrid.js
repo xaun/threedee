@@ -1,8 +1,17 @@
-var cubeGrid = function(){
+var cubeGrid = function(getTimeDomain, getFrequencies){
   //  emitter factory
   var attribs = {
     currentAnimationId: null,
-    emitterFrequency: null
+    emitterFrequency: null,
+    cubes: [],
+    emitters: [],
+    //Creating the scene and objects
+    scene: null,
+    camera: null,
+    renderer: null,
+    // Add OrbitControls so that we can pan around with the mouse.
+    controls: null
+    //var controls;
   }
   // Helpers
   // Creates random colors
@@ -36,6 +45,7 @@ var cubeGrid = function(){
   }
 
   var emitterFactory = function(x, y) {
+    var scene = attribs.scene;
     var settings = {
       //where particles start, settings here for colors?, spread speed?
       positionStyle  : Type.SPHERE,
@@ -62,68 +72,61 @@ var cubeGrid = function(){
     };
     var engine = new ParticleEngine()
     engine.setValues(settings);//starting the particle engine
-    engine.initialize();
+    engine.initialize(attribs.scene);
     // emitters.push(engine);
     return engine;
   };
 
   function init () {
-    //Creating the scene and objects
-    scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(60, $(window).width() / $(window).height(), 1, 1000);
-    var renderer = new THREE.WebGLRenderer();
-    var cubes = []; //Array of cubes
-    var emitters = [] //Emitter array
+    attribs.scene = new THREE.Scene();
+    attribs.camera = new THREE.PerspectiveCamera(60, $(window).width() / $(window).height(), 1, 1000);
+    attribs.renderer = new THREE.WebGLRenderer();
     // Add OrbitControls so that we can pan around with the mouse.
-      controls = new THREE.OrbitControls(camera, renderer.domElement);
-    //var controls;
+    attribs.controls = new THREE.OrbitControls(attribs.camera, attribs.renderer.domElement);
 
-    $('#container').append(renderer.domElement);
-
+    $('#visualiser-canvas').append(attribs.renderer.domElement);
     // create cubes probably can change this setting x y ie. just change divisor
     for (i=0; i < 512; i++){
       var x = Math.floor(i/16)-16;
       var y = i % 16;
       var cube = cubeFactory(x,y);
-      console.log(cube);
-      cubes.push(cube);
-      scene.add(cube);
+      attribs.cubes.push(cube);
+      attribs.scene.add(cube);
     };
 
     var directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
     directionalLight.position.set(0,1,1);
-    scene.add(directionalLight);
-     var directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
-    directionalLight.position.set(-6,1,1);
-    scene.add(directionalLight);
+    attribs.scene.add(directionalLight);
+     var directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.7);
+    directionalLight2.position.set(-6,1,1);
+    attribs.scene.add(directionalLight2);
 
-    camera.position.z = 50;
-    camera.position.x = 0;
-    camera.position.y = -50;
+    attribs.camera.position.z = 50;
+    attribs.camera.position.x = 0;
+    attribs.camera.position.y = -50;
   }
 
   var render = function(){
-
     var freqPoints = [];
     var freqArray = getTimeDomain();
     var freqData = getFrequencies();
     // Get data and move blocks
     for (var i = 0; i < freqArray.length; i++) {
-      cubes[i].position.z = freqArray[i]/50;
+      attribs.cubes[i].position.z = freqArray[i]/50;
     };
-    emitters.push(emitterFactory(_.random(0, 50), _.random(0, 50)));// create explosions
+    attribs.emitters.push(emitterFactory(_.random(0, 50), _.random(0, 50)));// create explosions
     // update emissions
-    for (var i = 0; i < emitters.length; i++) {
-      emitters[i].update(.15);
+    for (var i = 0; i < attribs.emitters.length; i++) {
+      attribs.emitters[i].update(.15);
     }
     attribs.currentAnimationId = requestAnimationFrame(render);
-    renderer.render(scene, camera);
-    controls.update();
+    attribs.renderer.render(attribs.scene, attribs.camera);
+    attribs.controls.update();
   };
 
   // Begin program
   init()
   render();
-  renderer.setSize($(window).width(), $(window).height());
+  attribs.renderer.setSize($(window).width(), $(window).height());
   currentVisualiser = attribs;
 }

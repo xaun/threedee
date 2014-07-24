@@ -55,9 +55,6 @@ $(document).ready(function () {
   // Function for window.onload sample track if needed..
   $('#player audio').on('playing', function () {
     // frequency data console log
-    setInterval(function () {
-      console.log(Sound.getFrequencyDomain());
-    }, 500);
   })
 
 });
