@@ -52,13 +52,75 @@ $(document).ready(function () {
   Sound.connectAudioNodes();
   $('#player').append(Sound.sourceNode.mediaElement);
 
-  // Function for window.onload sample track if needed..
+  // Function that runs when #player audio is playing sound =).
   $('#player audio').on('playing', function () {
     // frequency data console log
     setInterval(function () {
       console.log(Sound.getFrequencyDomain());
     }, 500);
   })
+
+  // ------------- FILE DRAG & DROP ------------------- //
+  // reference source for code = http://html5demos.com/dnd-upload#view-source
+  var dropZone = document.getElementById('drop-zone'),
+    tests = {
+      filereader: typeof FileReader != 'undefined',
+      dnd: 'draggable' in document.createElement('span'),
+      formdata: !!window.FormData,
+      progress: "upload" in new XMLHttpRequest
+    },
+    support = {
+      filereader: document.getElementById('filereader'),
+      formdata: document.getElementById('formdata'),
+      progress: document.getElementById('progress')
+    },
+    acceptedTypes = {
+      'audio/mpeg': true,
+      'audio/ogg': true,
+      'audio/wav': true,
+      'audio/x-aiff': true
+    },
+    progress = document.getElementById('uploadprogress'),
+    fileupload = document.getElementById('upload');
+
+  function previewfile(file) {
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        dropZone.innerHTML += '<p id="upl_success">Succesfully uploaded' + " " + file.name;
+      };
+
+      // Pauses current audio object, assigns a new source link, and plays.
+      reader.onloadend = function() {
+        Sound.audio0.pause();
+        Sound.audio0.src = reader.result;
+        Sound.audio0.play();
+      };
+      reader.readAsDataURL(file);
+  }
+
+  function readfiles(files) {
+      var formData = tests.formdata ? new FormData() : null;
+      for (var i = 0; i < files.length; i++) {
+        if (tests.formdata) formData.append('file', files[i]);
+        previewfile(files[i]);
+      }
+  }
+
+  // Drag & drop listeners
+  if (tests.dnd) {
+    dropZone.ondragover = function () { this.className = 'hover'; return false; };
+    dropZone.ondragend = function () { this.className = ''; return false; };
+    dropZone.ondrop = function (e) {
+      this.className = '';
+      e.preventDefault();
+      readfiles(e.dataTransfer.files);
+    }
+  } else {
+    fileupload.className = 'hidden';
+    fileupload.querySelector('input').onchange = function () {
+      readfiles(this.files);
+    };
+  };
 
 });
 
