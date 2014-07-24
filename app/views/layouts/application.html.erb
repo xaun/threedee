@@ -11,8 +11,8 @@
   <div id="container">
     <header>
       <%== smartnav %>
-      <div id="sign-in-form">
-        <%= form_tag(sessions_path, method: :post, remote: true) do %>
+      <div class="sign-in-form">
+        <%== form_tag(sessions_path, :id => "sign-in-fuck", :method => :post, remote: true) do %>
           <%= label :username, "Username" %>
           <%= text_field_tag :username %>
 

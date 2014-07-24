@@ -1,3 +1,10 @@
-#sign-in-form {
+.sign-in-form {
+  width: 500px;
   position: relative;
+  right: -750px;
+  padding-top: 5px;
+}
+
+.sign-in-form-animate {
+  right: -750px;
 }
