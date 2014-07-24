@@ -15,7 +15,7 @@ var cubeGrid = function(getTimeDomain, getFrequencies){
     particleSpeedBase: 90,
     particleSpeedSpread: 10,
     particleBackgroundColorController: 0x000000,
-    cubeStrength: 0.05
+    cubeStrength: 0.1
 
 
     //var controls;

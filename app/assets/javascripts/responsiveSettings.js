@@ -79,7 +79,11 @@ $(document).ready(function () {
   });
 
   $('#particleSpeedSpread').on('change', function(){
-    currentVisualiser.particleSpeedSpread = parseInt($('#particleSpeedSpread').val().slice(1,7), 16);
+    currentVisualiser.particleSpeedSpread = parseInt($('#particleSpeedSpread').val());
+  });
+
+  $('#cubeStrength').on('change', function(){
+    currentVisualiser.cubeStrength = parseInt($('#cubeStrength').val())/100;
   });
 
   $('#cubeBackgroundColorControl').on('change', function(){
