@@ -5,6 +5,7 @@ $(document).ready(function() {
 
     speed:300,
     containerWidth:$('.sound-panel').outerWidth(),
+    containerLeft:$('.sound-panel').css('left'),
     containerHeight:$('.sound-panel').outerHeight(),
     tabWidth:$('.sound-tab').outerWidth(),
 
@@ -15,7 +16,7 @@ $(document).ready(function() {
       $('a.sound-tab').click(function(event){
         if ($('.sound-panel').hasClass('open')) {
             $('.sound-panel')
-            .animate({left:'-' + soundTab.containerWidth}, soundTab.speed)
+            .animate({left: soundTab.containerLeft}, soundTab.speed)
             .removeClass('open');
         } else {
             $('.sound-panel')
