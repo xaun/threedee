@@ -1,6 +1,12 @@
-function sunFlare() {// Put the main code
+function sunFlare(getTimeDomain, getFrequencies) {// Put the main code
   // // to keep track of the mouse position
   // var mouseX = 0, mouseY = 0;
+  var vertexShader = "varying vec2 vUv;attribute float displacement; varying vec3 vNormal;varying float vertD;void main() {vertD = displacement;vUv = uv;vNormal = normal;vec3 newPosition =position + normal *vec3(displacement);gl_Position = projectionMatrix *modelViewMatrix *vec4(newPosition, 1.0);}";
+
+  var fragmentShader =
+    "varying vec2 vUv;varying vec3 vNormal;varying float vertD;uniform float red, green, blue;uniform sampler2D texture1;float random( vec3 scale, float seed ){return fract( sin( dot( gl_FragCoord.xyz + seed, scale ) ) * 43758.5453 + seed ) ;}void main() {vec2 position;vec3 light = vec3(0.5, 0.2, 1.0);light = normalize(light);float dProd = dot(vNormal, light);float r = .01 * random( vec3( 12.9898, 78.233, 151.7182 ), 0.0 );vec2 tPos = vec2(0, 1.0 - 1.3 * vertD / 255.0 + r);vec4 color = texture2D(texture1, tPos);gl_FragColor = vec4(color.rgb, 1.0);}";
+
+  //Boiler plate
   var camera,
   // 3d objects
   verts, material, mesh, cloudSystem,
@@ -27,7 +33,7 @@ function sunFlare() {// Put the main code
       type: 'f', // a float
       value: 0
     },
-    texture1: {type: "t", value: THREE.ImageUtils.loadTexture( "explosion.png" )}
+    texture1: {type: "t", value: THREE.ImageUtils.loadTexture( "images/explosion.png" )}
   },
   // may not be used
   volumeMusic = [];
@@ -52,8 +58,8 @@ function sunFlare() {// Put the main code
     material = new THREE.ShaderMaterial( {
       uniforms: uniforms,
       attributes: attributes,
-      vertexShader: $('#vertexShader').text(),
-      fragmentShader: $('#fragmentShader').text()
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader
     });
     material.depthTest = true;
 

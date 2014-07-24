@@ -1,13 +1,13 @@
 $(document).ready(function(){
-  var currentAnimationId;
   var getTimeDomain = function() {
-    Sound.getTimeDomain();
+    return Sound.getTimeDomain();
   };
 
-  console.log(Sound.getTimeDomain());
   var getFrequencies = function() {
-    Sound.getFrequencyDomain();
+    return Sound.getFrequencyDomain();
   };
+  var currentAnimationId;
+
   function stopPrevious () {
     try{
       cancelAnimationFrame(currentAnimationId);
@@ -21,14 +21,12 @@ $(document).ready(function(){
     console.log(currentAnimationId);
     stopPrevious();
     lines();
-    getTimeDomain();
   });
 
   $('#sunflare').on('click',function(){
-    console.log('click');
     console.log(currentAnimationId);
     stopPrevious();
-    sunFlare();
+    sunFlare(getTimeDomain, getFrequencies);
   });
   $('#emitter').on('click', function(){
     stopPrevious();

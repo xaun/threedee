@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require visualiserHandler.js
 //= require_tree .
 
 
