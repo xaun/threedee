@@ -20,9 +20,10 @@ a.sound-tab, a.vis-tab {
   top:100px;
   left:-292px;
   border: 1px solid #94FFFF;
+  border-left: 0px;
 }
 
-.sound-panel:after {
+/*.sound-panel:after {
   content: "";
   background-image: url('panel-background.png');
   background-size: cover;
@@ -33,7 +34,7 @@ a.sound-tab, a.vis-tab {
   right: 0;
   position: absolute;
   z-index: -1;
-}
+}*/
 
 a.sound-tab, a.vis-tab {
   display: block;
@@ -70,9 +71,10 @@ a.sound-tab span {
   top:100px;
   right:-292px;
   border: 1px solid #94FFFF;
+  border-right: 0px;
 }
 
-.vis-panel:after {
+/*.vis-panel:after {
   content: "";
   background-image: url('panel-background.png');
   background-size: cover;
@@ -83,7 +85,7 @@ a.sound-tab span {
   right: 0;
   position: absolute;
   z-index: -1;
-}
+}*/
 
 /*.vis-panel {
   opacity: 0.8;

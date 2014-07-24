@@ -6,10 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'http://connect.soundcloud.com/sdk.js' %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
   <div id="container">
     <header>
+    <div id="gh-btn">
+        <iframe src="http://ghbtns.com/github-btn.html?user=aldhsu&repo=TeamDNM&type=fork"
+          allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">Fork Me!</iframe>
+      </div>
       <%== smartnav %>
     </header>
     <%= yield %>
