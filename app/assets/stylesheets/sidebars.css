@@ -47,12 +47,30 @@ a.sound-tab span {
 .vis-panel {
   padding:20px;
   width: 250px;
-  background: black;
+  /*background: #2D95B5;*/
   /*border: #29216d 1px solid;*/
   position:absolute;
   top:100px;
   right:-291px;
 }
+
+.vis-panel {
+  opacity: 0.8;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #004C8A),
+    color-stop(0.01, #014B6B),
+    color-stop(0.27, #3A95C2),
+    color-stop(1, #003957)
+  );
+  background-image: -o-linear-gradient(bottom, #004C8A 0%, #014B6B 1%, #3A95C2 27%, #003957 100%);
+  background-image: -moz-linear-gradient(bottom, #004C8A 0%, #014B6B 1%, #3A95C2 27%, #003957 100%);
+  background-image: -webkit-linear-gradient(bottom, #004C8A 0%, #014B6B 1%, #3A95C2 27%, #003957 100%);
+  background-image: -ms-linear-gradient(bottom, #004C8A 0%, #014B6B 1%, #3A95C2 27%, #003957 100%);
+  background-image: linear-gradient(to bottom, #004C8A 0%, #014B6B 1%, #3A95C2 27%, #003957 100%);
+  }
 
 a.vis-tab {
   float: left;
