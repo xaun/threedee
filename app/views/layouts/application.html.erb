@@ -11,6 +11,17 @@
   <div id="container">
     <header>
       <%== smartnav %>
+      <div id="sign-in-form">
+        <%= form_tag(sessions_path, method: :post, remote: true) do %>
+          <%= label :username, "Username" %>
+          <%= text_field_tag :username %>
+
+          <%= label :password, "Password" %>
+          <%= password_field_tag :password %>
+
+          <%= submit_tag "Sign In" %>
+        <% end %>
+      </div>
     </header>
     <%= yield %>
   </div><!--/////////////////////////close container //////////-->

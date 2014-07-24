@@ -7,15 +7,14 @@ module ApplicationHelper
 
     if @current_user.present?
       links += "<div class='log-out-link'>"
-      links += link_to('Logout ' + @current_user.username, login_path, :data => {:method => :delete, :confirm => 'Really logout?'})
+      links += link_to('Logout ' + @current_user.username, session_path(@current_user.id), :data => {:method => :delete, :confirm => 'Really logout?'})
       links += "</div>"
     else
-      links += "<div id='sign-in-link'>#{ link_to('Sign in', login_path) }</div>"
-      links += "<div id='sign-up-link'>#{ link_to('Sign up', new_user_path) }</div>"
+      links += "<div id='sign-in-link'>Sign In</div>"
+      links += "<div id='sign-up-link'>Sign Up</div>"
     end
 
     links + '</div>'
     links + '</div>'
   end
-
 end
