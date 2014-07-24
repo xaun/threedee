@@ -5,11 +5,11 @@ function lines() {
   var lines2 = []; //Global array for animated elements
   // colors = [[255,0,0],[255,230,255],[255,0,213]];
   var attribs = {
-    var lineWidth = .2;
-    var speedX = 0.1;
-    var speedY = 0.1;
-    var speedZ = 1;
-    backgroundColorControler = 0xFFFFFF;
+    lineWidth: .2,
+    speedX: 0.1,
+    speedY: 0.1,
+    speedZ: 1,
+    backgroundColorControler: 0xFFFFFF
   }
   // Sets up the scene.
   function init() {

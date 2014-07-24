@@ -12,7 +12,7 @@ $(document).ready(function () {
   function stopPrevious () {
     try{
       cancelAnimationFrame(currentAnimationId);
-      $('#container').empty();
+      $('#visualiser-canvas').empty();
     } catch(err) {
       console.log('no id');
     }
@@ -26,13 +26,15 @@ $(document).ready(function () {
     if ($( "#visualisers_list option:selected" ).val() == 'emitter'){ $( "#controllsList form").hide();}
   });
 
-  $('#sunflareSubmit').on('click',function(){
+  $('#sunflareSubmit').on('click',function (event){
+    event.preventDefault();
     console.log(currentAnimationId);
     stopPrevious();
     sunFlare(getTimeDomain, getFrequencies);
   });
 
-  $('#linesSubmit').on('click',function(){
+  $('#linesSubmit').on('click',function (event){
+      event.preventDefault();
       console.log(currentAnimationId);
       stopPrevious();
       sunFlare2(getTimeDomain, getFrequencies);
