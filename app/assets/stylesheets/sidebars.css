@@ -7,71 +7,88 @@
   user-select: none;
 }
 
-.sound-panel{
-  padding:20px;
+/* sound panel */
+.sound-panel {
   width: 250px;
-  background: #2F3030;
-  /*border: #29216d 1px solid;*/
-  position:absolute;
-  top:100px;
-  left:-292px;
+  background-color: #2F3030;
+  position: absolute;
+  height: 170px;
+  top: 100px;
+  left: -250px;
+  padding-bottom: 50px;
 }
 
-/*.sound-panel:after {
-  content: "";
-  background-image: url('panel-background.png');
-  background-size: cover;
-  opacity: .5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-}*/
-
+/* sound and visual tab */
 a.sound-tab, a.vis-tab {
   display: block;
   background: #2F3030;
   position: relative;
-  bottom: 20px;
+  bottom: 0px;
   font-size: 1.5em;
   padding: 12px 8px 12px 8px;
   text-decoration: none;
   color: #B9BFBD;
 }
 
+/* sound tab */
 a.sound-tab {
   float: right;
-  left: 48px;
+  left: 28px;
   border-radius: 0px 5px 5px 0px;
 }
 
+/* Each letter for the vertical word tabs for sound panel */
 a.sound-tab span {
   display: block;
 }
 
+/* visual panel*/
 .vis-panel {
-  padding:20px;
   width: 250px;
   background: #2F3030;
-  position:absolute;
-  top:100px;
-  right:-292px;
+  position: absolute;
+  top: 100px;
+  right: -250px;
+  padding-bottom: 30px;
 }
 
+/* visual tab */
 a.vis-tab {
   float: left;
-  right: 48px;
+  right: 28px;
   border-radius: 5px 0px 0px 5px;
   border-width: 1px 0px 1px 1px;
 }
 
+/* Each letter for the vertical word tabs for visuals panel */
 a.vis-tab span {
   display: block
 }
 
+/* div for colour underneath sound menu options */
+.under-color {
+  background-color: #B5FFFB;
+  height: 59px;
+  width: 245px;
+}
+
+/* mp3 menu button */
+#mp3-drop-menu {
+  position: absolute;
+  width: 245px;
+  top: 0px;
+}
+
+/* soundcloud menu button */
+#soundcloud-menu {
+  position: absolute;
+  width: 245px;
+  top: 59px;
+}
+
+/* mp3 menu button & soundcloud menu button */
 #mp3-drop-menu, #soundcloud-menu {
+  background-color: #2F3030;
   text-align: center;
   padding-bottom: 15px;
   font-size: 22px;
@@ -83,19 +100,27 @@ a.vis-tab span {
   border-bottom: 1px solid #B5FFFB;
 }
 
+/* all buttons */
 #mp3-drop-menu:hover,
 #soundcloud-menu:hover,
 #sign-in-link:hover a,
 #sign-up-link:hover a {
   color: #B5FFFB;
   text-shadow: 0px 0px 10px white, 2px 2px 3px black;
+  /*border-bottom: 4px solid #B5FFFB;*/
   /*box-shadow: 0 0 15px white;*/
 }
 
+/* hover for tab spans */
 #span-container:hover {
   display: block;
   color: #B5FFFB;
   text-shadow: 0px 0px 10px white, 2px 2px 3px black;
+}
+
+/* visualiser select box */
+#visualiser_list {
+
 }
 
 
