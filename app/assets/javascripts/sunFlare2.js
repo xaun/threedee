@@ -3,6 +3,9 @@ function sunFlare2(getTimeDomain, getFrequencies) {
   // // to keep track of the mouse position
   // var mouseX = 0, mouseY = 0;
   var sunFlare = {
+    sphereSize: 1,
+    spinningSpeedX: 0,
+    spinningSpeedY: 0,
     vertexShader : "varying vec2 vUv;attribute float displacement; varying vec3 vNormal;varying float vertD;void main() {vertD = displacement;vUv = uv;vNormal = normal;vec3 newPosition =position + normal *vec3(displacement);gl_Position = projectionMatrix *modelViewMatrix *vec4(newPosition, 1.0);}",
 
     fragmentShader:
@@ -125,12 +128,14 @@ function sunFlare2(getTimeDomain, getFrequencies) {
     var red = frequency[5]/255;
     var green = frequency[7]/255;
     var blue = frequency[10]/255;
-    cloudSystem.rotation.y += 0.0001;
+    sunFlare.mesh.rotation.y += 0.01;
+    cloudSystem.rotation.y += sunFlare.spinningSpeedY;
+    cloudSystem.rotation.x += sunFlare.spinningSpeedX;
     //updating each element
     //vertices updater
     sunFlare.attributes.displacement.needsUpdate = true;
     for (var v = 0; v < sunFlare.verts.length; v++) {
-      sunFlare.attributes.displacement.value[v] = TimeDomain[(v) % TimeDomain.length];
+      sunFlare.attributes.displacement.value[v] = TimeDomain[(v) % TimeDomain.length] * sunFlare.sphereSize;
     }
     //future beat detection particle reactions
     // var currentVolume = _.reduce(TimeDomain.subarray(0,300), function(memo, num) { return memo + num;}, 0)
