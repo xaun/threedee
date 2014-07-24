@@ -22,3 +22,43 @@ body {
   overflow-x: hidden;
   font-family: 'Anonymous Pro';
 }
+
+#nav, #inner-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+}
+
+#nav {
+  height: 42px;
+  background: #1BC400;
+  text-align: right;
+}
+
+#inner-nav {
+  height: 40px;
+  background: #3D3B40;
+  border-bottom: 1px solid black;
+}
+
+#sign-up-link,
+#sign-in-link,
+#sign-out-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding-right: 12.5px;
+  padding-left: 12.5px;
+}
+
+#sign-up-link a,
+#sign-in-link a {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: black;
+}
+
+#sign-up-link,
+#sign-in-link {
+  border-left: 1px solid black;
+}

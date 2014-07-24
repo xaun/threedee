@@ -4,12 +4,17 @@
     <label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label>
   </p>
 
+  <div id="soundcloud-url">
+    <p>Find a track on http://www.soundcloud.com and paste the URL below in the following format: http://soundcloud.com/artist/track</p>
+    <input type="url" placeholder="Paste Soundcloud URL here (http://soundcloud.com/artist/track)">
+  </div>
+
   <div id="player">
     <audio controls="controls">
       <source src="/audio/MakeYouWanna.mp3" type="audio/mpeg"></source>
     </audio>
   </div>
-</div><!--///////////// close index-container ////////-->
+</div>
 
 <div id="sidebar-container">
   <div class="sound-panel">
@@ -20,9 +25,8 @@
       <span>n</span>
       <span>d</span>
     </a>
-    <div id="mp3-drop">
-
-    </div>
+    <div id="mp3-drop-menu">MP3 DROP</div>
+    <div id="soundcloud-menu">SOUNDCLOUD URL</div>
   </div>
 
   <div class="vis-panel">
@@ -34,12 +38,27 @@
       <span>a</span>
       <span>l</span>
     </a>
-      <button id="sunflare">S</button>
-      <button id="lines">L</button>
-      <button id="emitter">E</button>
-      <button id="galaxy">G</button>
-      <button id="cubeGrid">C</button>
-      <button id="flat">F</button>
+
+      <select name="visualisers" id="visualisers_list">
+      <option value="sunflare">sunflare</option>
+      <option value="lines">lines</option>
+      <option value="emitter">emitter</option>
+      <option value="galaxy">galaxy</option>
+      <option value="cubeGrid">cubeGrid</option>
+      <option value="flat">flat</option>
+      </select>
+
+    <form id="linesSpeedControls">
+          <ul>
+            <li>SpeedX: <input type="range" id="speedControlX" name="speedControlX" min="-3.9" max="10.0"></li>
+            <li>SpeedY: <input type="range" id="speedControlY" name="speedControlY" min="-3.9" max="10.0"></li>
+            <li>SpeedZ: <input type="range" id="speedControlZ" name="speedControlZ" min="-3.9" max="10.0"></li>
+            <li>Line Thickness: <input type="range" id="lineWidthControler" name="lineWidthControler" min="-0.9" max="10.0"></li>
+            <li>Background Color: <input type="color" id="backgroundColorControl" name="backgroundColorControl"></li>
+            <input type="submit" id="submit">
+          </ul>
+        </form>
+
     <div id="form-wrap">
       <p>
         Hard charged and convinced it's contagious<br>
@@ -54,6 +73,9 @@
       </p>
     </div>
   </div>
+</div>
+
 </div><!--///////////// close sidebar-container ////////-->
 <div id="visualiser"></div><!--///////////close visualiser ////////-->
+
 

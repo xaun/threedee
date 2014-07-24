@@ -1,23 +1,37 @@
+.sound-panel, .vis-panel {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sound-tab, .vis-tab {
+  border: 1px solid #1BC400;
+}
+
 .sound-panel {
   padding:20px;
   width: 250px;
-  background: #bab6d8;
+  background: black;
   /*border: #29216d 1px solid;*/
   position:absolute;
-  top:10px;
+  top:100px;
   left:-291px;
+  border: 1px solid #1BC400;
 }
 
-a.sound-tab, .vis-tab {
+a.sound-tab, a.vis-tab {
   border-width: 1px 1px 1px 0;
   display: block;
-  background-color: white;
+  background-color: black;
   position: relative;
-  bottom: 20px;
+  bottom: 21px;
   font-size: 1.5em;
   padding: 12px 8px 12px 8px;
   text-decoration: none;
-  color: black;
+  color: #1BC400;
 }
 
 a.sound-tab {
@@ -33,10 +47,10 @@ a.sound-tab span {
 .vis-panel {
   padding:20px;
   width: 250px;
-  background: #bab6d8;
+  background: black;
   /*border: #29216d 1px solid;*/
   position:absolute;
-  top:10px;
+  top:100px;
   right:-291px;
 }
 
@@ -50,6 +64,19 @@ a.vis-tab span {
   display: block;
 }
 
+#mp3-drop-menu, #soundcloud-menu {
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 22px;
+  color: #1BC400;
+  border-bottom: 1px solid #1BC400;
+  cursor: pointer;
+  padding-top: 20px;
+}
+
+#soundcloud-menu {
+
+}
 
 
 

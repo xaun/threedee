@@ -46,6 +46,7 @@ var Sound = {
 $(document).ready(function () {
   Sound.audioContextSetup();
   Sound.createAudioObject();
+  Sound.setupAudioNodes();
 
   // ------------- FILE DRAG & DROP ------------------- //
   // reference source for code = http://html5demos.com/dnd-upload#view-source
