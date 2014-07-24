@@ -10,7 +10,14 @@ var cubeGrid = function(getTimeDomain, getFrequencies){
     camera: null,
     renderer: null,
     // Add OrbitControls so that we can pan around with the mouse.
-    controls: null
+    controls: null,
+    particleNumber: 10,
+    particleSpeedBase: 90,
+    particleSpeedSpread: 10,
+    particleBackgroundColorController: 0x000000,
+    cubeStrength: 0.1
+
+
     //var controls;
   }
   // Helpers
@@ -29,15 +36,13 @@ var cubeGrid = function(getTimeDomain, getFrequencies){
     var geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
     var material = new THREE.MeshPhongMaterial({
       color: randomFairColor(),
-      ambient: '0x808080',
+      ambient: '0xff550d',
       specular: 0xffffff,
       shininess: 10,
       reflectivity: 1.5
     });
 
-    //Not sure how this part works, need to figure out.
     var cube = new THREE.Mesh(geometry, material);
-    //Left position on screen??
     cube.position.x = x*2;
     cube.position.y = y*2;
     cube.position.z = 30;
@@ -53,8 +58,8 @@ var cubeGrid = function(getTimeDomain, getFrequencies){
       positionRadius : 10,
 
       velocityStyle  : Type.SPHERE,
-      speedBase      : 90,
-      speedSpread    : 10,
+      speedBase      : attribs.particleSpeedBase,
+      speedSpread    : attribs.particleSpeedSpread,
       accelerationBase : new THREE.Vector3( 0, 0, -80  ),
       particleTexture : THREE.ImageUtils.loadTexture( 'images/white.png' ),
       blendStyle   : THREE.AdditiveBlending,
@@ -62,11 +67,11 @@ var cubeGrid = function(getTimeDomain, getFrequencies){
       sizeTween    : new Tween( [1], [2] ),//size of particles
       sizeBase    : 0.9,
       sizeSpread  : 0.5,
-      colorBase   : new THREE.Vector3(1, 1, 1), // H,S,L
+      colorBase   : new THREE.Vector3(1, 10, 0), // H,S,L
       colorSpread : new THREE.Vector3(1, 1, 1),
       opacityBase : 1,
 
-      particlesPerSecond : 10,
+      particlesPerSecond : attribs.particleNumber,
       particleDeathAge   : 1,
       emitterDeathAge    : .5
     };
@@ -104,15 +109,18 @@ var cubeGrid = function(getTimeDomain, getFrequencies){
     attribs.camera.position.z = 50;
     attribs.camera.position.x = 0;
     attribs.camera.position.y = -50;
+
+    attribs.renderer.setClearColor( attribs.particleBackgroundColorController, 0 ); // the default
   }
 
   var render = function(){
+    attribs.renderer.setClearColor( attribs.particleBackgroundColorController, 0 ); // the default
     var freqPoints = [];
     var freqArray = getTimeDomain();
     var freqData = getFrequencies();
     // Get data and move blocks
     for (var i = 0; i < freqArray.length; i++) {
-      attribs.cubes[i].position.z = freqArray[i]/50;
+      attribs.cubes[i].position.z = (freqArray[i]-128) * attribs.cubeStrength;
     };
     attribs.emitters.push(emitterFactory(_.random(0, 50), _.random(0, 50)));// create explosions
     // update emissions

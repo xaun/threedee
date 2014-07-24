@@ -46,26 +46,48 @@ $(document).ready(function () {
     stopPrevious();
     cubeGrid(getTimeDomain, getFrequencies);
   });
-  // Line controls
+
+  //lines controlls
   $('#speedControlX').on('change', function(){
-  currrentVisualiser.speedX = parseFloat($('#speedControlX').val());
+  currentVisualiser.speedX = parseFloat($('#speedControlX').val());
   });
 
   $('#speedControlY').on('change', function(){
-    currrentVisualiser.speedY = parseFloat($('#speedControlY').val());
+    currentVisualiser.speedY = parseFloat($('#speedControlY').val());
   });
 
   $('#speedControlZ').on('change', function(){
-    currrentVisualiser.speedZ = parseFloat($('#speedControlZ').val());
+    currentVisualiser.speedZ = parseFloat($('#speedControlZ').val());
   });
 
   $('#lineWidthControler').on('change', function(){
-    currrentVisualiser.lineWidth = parseFloat($('#lineWidthControler').val());
+    currentVisualiser.lineWidth = parseFloat($('#lineWidthControler').val());
   });
 
   $('#backgroundColorControl').on('change', function(){
     console.log('color change');
-    currrentVisualiser.backgroundColorController = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
+    currentVisualiser.backgroundColorController = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
+  });
+
+  //cubeGrid controlls
+  $('#particleNumber').on('change', function(){
+  currentVisualiser.particleNumber = parseFloat($('#particleNumber').val());
+  });
+
+  $('#particleSpeedBase').on('change', function(){
+    currentVisualiser.particleSpeedBase = parseFloat($('#particleSpeedBase').val());
+  });
+
+  $('#particleSpeedSpread').on('change', function(){
+    currentVisualiser.particleSpeedSpread = parseInt($('#particleSpeedSpread').val());
+  });
+
+  $('#cubeStrength').on('change', function(){
+    currentVisualiser.cubeStrength = parseInt($('#cubeStrength').val())/100;
+  });
+
+  $('#cubeBackgroundColorControl').on('change', function(){
+    currentVisualiser.particleBackgroundColorController = parseInt($('#cubeBackgroundColorControl').val().slice(1,7), 16);
   });
 
   // Sunflare controls
