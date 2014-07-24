@@ -7,6 +7,7 @@ $(document).ready(function() {
   });
 
   $("#sign-in-fuck").on('ajax:sucess', function(name) {
+    console.log('working');
     $("#sign-in-link").hide();
     $("#sign-up-link").hide();
   })

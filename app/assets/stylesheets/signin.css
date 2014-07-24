@@ -1,10 +1,71 @@
 .sign-in-form {
-  width: 500px;
+  width: 630px;
   position: relative;
-  right: -750px;
+  right: -610px;
   padding-top: 5px;
 }
 
 .sign-in-form-animate {
   right: -750px;
 }
+
+.sign-in-form input[type=text], input[type=password], textarea{
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 2px 0px 2px 2px;
+  margin: 3px 1px 3px 0px;
+  border: 2px solid #B5FFFB;
+  font-size: 1em;
+}
+
+.sign-in-form  label{
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+input[name=commit]{
+  background-color: #B5FFFB;
+  border: 0;
+  border-bottom: 1px solid #B5FFFB;
+  border-right: 1px solid #B5FFFB;
+  text-shadow: 2px 2px #FFF;
+  position: relative;
+  padding: 2px 4px;
+  font-size: 1em;
+  color: #000;
+  text-decoration: none;
+  font-style: italic;
+  text-transform: uppercase;
+  border-radius: 0;
+  -webkit-appearance:none;
+}
+
+input[name=commit]:hover{
+  background-color: #B5FFFB;
+  position-left: 200px;
+  border: 0;
+  border-bottom: 1px solid #FFF;
+  border-right: 1px solid #FFF;
+  text-shadow: 2px 2px #FFF;
+  position: relative;
+  padding: 2px 4px;
+  font-size: 1em;
+  color: #000;
+  text-decoration: none;
+  font-style: italic;
+  text-transform: uppercase;
+  border-radius: 0;
+  -webkit-appearance:none;
+  /*-webkit-transform:rotate(180deg);
+    transform:rotate(180deg);*/
+    -ms-transform: translate(2px,3px); /* IE 9 */
+    -webkit-transform: translate(2px,3px); /* Chrome, Safari, Opera */
+    transform: translate(2px,3px);
+}
+
+
+
+

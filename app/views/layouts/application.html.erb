@@ -13,10 +13,10 @@
       <%== smartnav %>
       <div class="sign-in-form">
         <%== form_tag(sessions_path, :id => "sign-in-fuck", :method => :post, remote: true) do %>
-          <%= label :username, "Username" %>
+          <%= label :username, "USERNAME" %>
           <%= text_field_tag :username %>
 
-          <%= label :password, "Password" %>
+          <%= label :password, "PASSWORD" %>
           <%= password_field_tag :password %>
 
           <%= submit_tag "Sign In" %>
