@@ -26,8 +26,12 @@
       <span>D</span>
     </div>
     </a>
-    <div id="mp3-drop-menu">MP3 DROP</div>
-    <div id="soundcloud-menu">SOUNDCLOUD URL</div>
+    <div class="under-color">
+      <div id="mp3-drop-menu">MP3 DROP</div>
+    </div>
+    <div class="under-color">
+      <div id="soundcloud-menu">SOUNDCLOUD URL</div>
+    </div>
   </div><!--///////////// close sound-panel ////////-->
 
   <div class="vis-panel">
@@ -56,8 +60,9 @@
           <li>SpeedZ:<input type="range" id="speedControlZ" name="speedControlZ" min="-3.9" max="10.0"></li>
           <li>Line Thickness: <input type="range" id="lineWidthControler" name="lineWidthControler" min="-0.9" max="10.0"></li>
           <li>Background Color: <input type="color" id="backgroundColorControl" name="backgroundColorControl"></li>
-          <input name="start visualizing" type="submit" id="linesSubmit">
-          <button>save settings</button>
+
+          <input value="Start" type="submit" id="linesSubmit">
+          <input type="submit" id="lines-save" value="Save" class="save-button">
         </ul>
       </form><!--////////////////// close form linesSpeedControls//////////-->
 
@@ -66,8 +71,10 @@
           <li>Rotation SpeedY: <input type="range" id="sunflare-rotationX" name="sunflare-rotationX" min="-50" max="50"></li>
           <li>Rotation SpeedX: <input type="range" id="sunflare-rotationY" name="sunflare-rotationY" min="-50" max="50"></li>
           <li>Type of Star: <input type="range" id="sunflare-size" min="1" max="120"></li>
-          <input type="submit" id="sunflareSubmit">
-          <button>save settings</button>
+
+          <input value="Start" type="submit" id="sunflareSubmit">
+          <input type="submit" id="sunflare-save" value="Save" class="save-button">
+
         </ul>
       </form><!--////////////////// close form sunflareControls//////////-->
 
@@ -79,8 +86,8 @@
           <li>Cube Strength: <input type="range" id="cubeStrength" min="1" max="50"></li>
           <li>Background Color: <input type="color" id="cubeBackgroundColorControl"></li>
 
-          <input type="submit" id="cubeGridSubmit">
-          <button>save settings</button>
+          <input value="Start" type="submit" id="cubeGridSubmit">
+          <input type="submit" id="cubegrid-save" value="Save" class="save-button">
         </ul>
       </form><!--////////////////// close form cubeGridControls//////////-->
     </div><!--////////////////// close controllsList //////////-->

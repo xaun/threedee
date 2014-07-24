@@ -5,6 +5,7 @@ $(document).ready(function() {
 
     speed:300,
     containerWidth:$('.sound-panel').outerWidth(),
+    containerLeft:$('.sound-panel').css('left'),
     containerHeight:$('.sound-panel').outerHeight(),
     tabWidth:$('.sound-tab').outerWidth(),
 
@@ -15,7 +16,7 @@ $(document).ready(function() {
       $('a.sound-tab').click(function(event){
         if ($('.sound-panel').hasClass('open')) {
             $('.sound-panel')
-            .animate({left:'-' + soundTab.containerWidth}, soundTab.speed)
+            .animate({left: soundTab.containerLeft}, soundTab.speed)
             .removeClass('open');
         } else {
             $('.sound-panel')
@@ -84,5 +85,24 @@ $(document).ready(function() {
     };
   });
 
+
+
+  // Sound panel menu button annimations
+  $('#mp3-drop-menu').mousedown(function () {
+    $('#mp3-drop-menu').css('top', '-5px');
+  });
+
+  $('#mp3-drop-menu').mouseup(function () {
+    $('#mp3-drop-menu').css('top', '0px');
+  });
+
+
+  $('#soundcloud-menu').mousedown(function () {
+    $('#soundcloud-menu').css('top', '55px')
+  });
+
+  $('#soundcloud-menu').mouseup(function () {
+    $('#soundcloud-menu').css('top', '59px')
+  });
 
 });
