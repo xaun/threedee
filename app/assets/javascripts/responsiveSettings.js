@@ -19,8 +19,8 @@ $(document).ready(function () {
       console.log('no id');
     }
   };
-  $( "#controllsList form").hide();
-
+  $("#controllsList form").hide();
+  $("#sunflareControls").show();
   $( "#visualisers_list" ).on('change', function(){
     if ($( "#visualisers_list option:selected" ).val() == 'lines'){ $( "#controllsList form").hide(); $('#linesSpeedControls').show([400], 'swing'); }
     if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show([400], 'swing'); }
@@ -46,7 +46,7 @@ $(document).ready(function () {
     stopPrevious();
     cubeGrid(getTimeDomain, getFrequencies);
   });
-
+  // Line controls
   $('#speedControlX').on('change', function(){
   currrentVisualiser.speedX = parseFloat($('#speedControlX').val());
   });
@@ -66,6 +66,20 @@ $(document).ready(function () {
   $('#backgroundColorControl').on('change', function(){
     console.log('color change');
     currrentVisualiser.backgroundColorController = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
+  });
+
+  // Sunflare controls
+  $('#sunflare-rotationX').on('change', function(){
+    console.log('click');
+    currentVisualiser.spinningSpeedX = parseFloat($('#sunflare-rotationX').val())/100;
+  });
+
+  $('#sunflare-rotationY').on('change', function(){
+    currentVisualiser.spinningSpeedY = parseFloat($('#sunflare-rotationY').val())/100;
+  });
+
+  $('#sunflare-size').on('change', function(){
+    currentVisualiser.sphereSize = parseFloat($('#sunflare-size').val())/100;
   });
 
 });
