@@ -85,4 +85,23 @@ $(document).ready(function() {
   });
 
 
+
+  // Sound panel menu button annimations
+  $('#mp3-drop-menu').mousedown(function () {
+    $('#mp3-drop-menu').css('top', '-5px');
+  });
+
+  $('#mp3-drop-menu').mouseup(function () {
+    $('#mp3-drop-menu').css('top', '0px');
+  });
+
+
+  $('#soundcloud-menu').mousedown(function () {
+    $('#soundcloud-menu').css('top', '55px')
+  });
+
+  $('#soundcloud-menu').mouseup(function () {
+    $('#soundcloud-menu').css('top', '59px')
+  });
+
 });
