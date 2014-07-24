@@ -63,6 +63,7 @@ $(document).ready(function() {
   visTab.init();
 
   //------------------ MENU JS --------------------//
+    // show and hide mp3 / soundcloud pop outs
   $('#mp3-drop-menu').on('click', function () {
     if ($('#soundcloud-url').is(':visible')) {
       $('#soundcloud-url').hide();
@@ -87,7 +88,7 @@ $(document).ready(function() {
 
 
 
-  // Sound panel menu button annimations
+    // Sound panel menu button annimations
   $('#mp3-drop-menu').mousedown(function () {
     $('#mp3-drop-menu').css('top', '-5px');
   });
