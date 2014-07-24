@@ -13,7 +13,6 @@ $(document).ready(function () {
 
 
   var linesSettings = function (){
-    $( "#visualisers_list option:selected" ).val('lines').on('select', function() {
     $('#linesSpeedControls').show();
-  });
-}
+  };
+});
