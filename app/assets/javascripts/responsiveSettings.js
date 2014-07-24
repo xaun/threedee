@@ -7,6 +7,7 @@ $(document).ready(function () {
     return Sound.getFrequencyDomain();
   };
   var currentAnimationId;
+  var currentVisualiser;
 
   function stopPrevious () {
     try{
@@ -16,7 +17,6 @@ $(document).ready(function () {
       console.log('no id');
     }
   };
-
   $( "#controllsList form").hide();
 
   $( "#visualisers_list" ).on('change', function(){
@@ -25,10 +25,18 @@ $(document).ready(function () {
     if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show(); }
     if ($( "#visualisers_list option:selected" ).val() == 'emitter'){ $( "#controllsList form").hide();}
   });
+
   $('#sunflareSubmit').on('click',function(){
+    console.log(currentAnimationId);
+    stopPrevious();
+    sunFlare(getTimeDomain, getFrequencies);
+  });
+
+  $('#linesSubmit').on('click',function(){
       console.log(currentAnimationId);
       stopPrevious();
-      sunFlare(getTimeDomain, getFrequencies);
+      sunFlare2(getTimeDomain, getFrequencies);
+
     });
 });
 

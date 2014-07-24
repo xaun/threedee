@@ -4,11 +4,13 @@ function lines() {
   var lines = []; //Global array for animated elements
   var lines2 = []; //Global array for animated elements
   // colors = [[255,0,0],[255,230,255],[255,0,213]];
-  var lineWidth = .2;
-  var speedX = 0.1;
-  var speedY = 0.1;
-  var speedZ = 1;
-  backgroundColorControler = 0xFFFFFF;
+  var attribs = {
+    var lineWidth = .2;
+    var speedX = 0.1;
+    var speedY = 0.1;
+    var speedZ = 1;
+    backgroundColorControler = 0xFFFFFF;
+  }
   // Sets up the scene.
   function init() {
 
@@ -85,7 +87,7 @@ function lines() {
     var lineMaterial = new THREE.LineBasicMaterial({
       // color: "rgb("+r+","+g+","+b+")"
       color: "rgb("+r+","+g+","+b+")",
-      linewidth: lineWidth
+      linewidth: attrib.lineWidth
     });
     // console.log(lineMaterial);
     var lineGeometry = new THREE.Geometry();
@@ -203,20 +205,19 @@ function lines() {
   //   // return parseInt(result);
   // }
 
-  $('#speedControls').on('submit', function(event) {
-    event.preventDefault();
-    speedX = parseFloat($('#speedControlX').val());
-    speedY = parseFloat($('#speedControlY').val());
-    speedZ = parseFloat($('#speedControlZ').val());
-    lineWidth = parseFloat($('#lineWidthControler').val());
-    backgroundColorControler = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
-  });
+  // Testing on controls
+  // $('#speedControls').on('submit', function(event) {
+  //   event.preventDefault();
+  //   speedX = parseFloat($('#speedControlX').val());
+  //   speedY = parseFloat($('#speedControlY').val());
+  //   speedZ = parseFloat($('#speedControlZ').val());
+  //   lineWidth = parseFloat($('#lineWidthControler').val());
+  //   backgroundColorControler = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
+  // });
 
   init();
-  // backgroundColor = 0xFFFFFF;
-  lineWidth = 3;
+  // backgroundColor = 0xFFFFFFF
   animate();
-
 
 }
 
