@@ -14,13 +14,14 @@
  *= require_self
  */
 
-@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
 
 body {
   background-color: black;
   color: white;
   overflow-x: hidden;
-  font-family: 'Anonymous Pro';
+  overflow-y: hidden;
+  font-family: 'Inconsolata';
 }
 
 #nav, #inner-nav {
@@ -31,15 +32,15 @@ body {
 }
 
 #nav {
-  height: 42px;
-  background: #94FFFF;
+  height: 41px;
+  background: #B5FFFB;
   text-align: right;
 }
 
 #inner-nav {
   height: 40px;
-  background: #3D3B40;
-  border-bottom: 1px solid black;
+  background: #2F3030;
+  /*border-bottom: 1px solid black;*/
 }
 
 #sign-up-link,
@@ -55,10 +56,10 @@ body {
 #sign-in-link a {
   font-size: 1.2em;
   text-decoration: none;
-  color: black;
+  color: #B9BFBD;
 }
 
 #sign-up-link,
 #sign-in-link {
-  border-left: 1px solid black;
+  border-left: 1px solid #B9BFBD;
 }
