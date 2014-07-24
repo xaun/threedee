@@ -20,7 +20,6 @@ $(document).ready(function () {
   $( "#controllsList form").hide();
 
   $( "#visualisers_list" ).on('change', function(){
-    console.log('changing');
     if ($( "#visualisers_list option:selected" ).val() == 'lines'){ $( "#controllsList form").hide(); $('#linesSpeedControls').show([400], 'swing'); }
     if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show([400], 'swing'); }
     if ($( "#visualisers_list option:selected" ).val() == 'cubeGrid'){ $( "#controllsList form").hide(); $('#cubeGridControls').show([400], 'swing');}
@@ -38,5 +37,29 @@ $(document).ready(function () {
     lines(getTimeDomain, getFrequencies);
   });
 
-});
+
+    $('#speedControlX').on('change', function(){
+    currrentVisualiser.speedX = parseFloat($('#speedControlX').val());
+    });
+
+    $('#speedControlY').on('change', function(){
+      currrentVisualiser.speedY = parseFloat($('#speedControlY').val());
+    });
+
+    $('#speedControlZ').on('change', function(){
+      currrentVisualiser.speedZ = parseFloat($('#speedControlZ').val());
+    });
+
+    $('#lineWidthControler').on('change', function(){
+      currrentVisualiser.lineWidth = parseFloat($('#lineWidthControler').val());
+    });
+
+    $('#backgroundColorControl').on('change', function(){
+      console.log('color change');
+      currrentVisualiser.backgroundColorController = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
+    });
+
+  });
+
+
 

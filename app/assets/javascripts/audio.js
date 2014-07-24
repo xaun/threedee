@@ -56,7 +56,7 @@ $(document).ready(function () {
   $('#player audio').on('playing', function () {
     // frequency data console log
     setInterval(function () {
-      console.log(Sound.getFrequencyDomain());
+      // console.log(Sound.getFrequencyDomain());
     }, 500);
   })
 

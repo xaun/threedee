@@ -116,7 +116,7 @@ function lines(getTimeDomain, getFrequencies) {
       freqPoints.push(freqPoint);
     };
     lineFactory(freqData[0]-80, freqData[5], freqData[10]+90, freqPoints);
-    console.log(average);
+    // console.log(average);
 
     // if (average < 50){
     //   lineFactory(colors[0][0], colors[0][1], colors[0][2],freqPoints);
