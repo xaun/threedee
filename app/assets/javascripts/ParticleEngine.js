@@ -338,7 +338,7 @@ ParticleEngine.prototype.createParticle = function()
   return particle;
 }
 
-ParticleEngine.prototype.initialize = function()
+ParticleEngine.prototype.initialize = function(scene)
 {
   // link particle data with geometry/material data
   for (var i = 0; i < this.particleCount; i++)
@@ -360,7 +360,8 @@ ParticleEngine.prototype.initialize = function()
   this.particleMesh = new THREE.PointCloud( this.particleGeometry, this.particleMaterial );
   this.particleMesh.dynamic = true;
   this.particleMesh.sortParticles = true;
-  scene.add( this.particleMesh );
+  this.scene = scene;
+  this.scene.add( this.particleMesh );
 }
 
 ParticleEngine.prototype.update = function(dt)
@@ -422,6 +423,6 @@ ParticleEngine.prototype.update = function(dt)
 
 ParticleEngine.prototype.destroy = function()
 {
-    scene.remove( this.particleMesh );
+    this.scene.remove( this.particleMesh );
 }
 ///////////////////////////////////////////////////////////////////////////////

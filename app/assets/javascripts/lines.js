@@ -9,7 +9,8 @@ function lines(getTimeDomain, getFrequencies) {
     speedX: 0.1,
     speedY: 0.1,
     speedZ: 1,
-    backgroundColorController: 0xFFFFFF
+    backgroundColorController: 0xFFFFFF,
+    currentAnimationId: null
   }
   // Sets up the scene.
   function init() {
@@ -116,7 +117,6 @@ function lines(getTimeDomain, getFrequencies) {
       freqPoints.push(freqPoint);
     };
     lineFactory(freqData[0]-80, freqData[5], freqData[10]+90, freqPoints);
-    console.log(average);
 
     // if (average < 50){
     //   lineFactory(colors[0][0], colors[0][1], colors[0][2],freqPoints);
@@ -215,6 +215,6 @@ function lines(getTimeDomain, getFrequencies) {
   init();
   // backgroundColor = 0xFFFFFFF
   animate();
-  currrentVisualiser = attribs;
+  currentVisualiser = attribs;
 }
 

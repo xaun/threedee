@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var getTimeDomain = function() {
+  var getTimeDomain = function() {
     return Sound.getTimeDomain();
   };
 
@@ -7,20 +7,21 @@ $(document).ready(function () {
     return Sound.getFrequencyDomain();
   };
   var currentAnimationId;
-  var currentVisualiser;
 
   function stopPrevious () {
     try{
+      console.log(currentVisualiser);
+      console.log(currentVisualiser.currentAnimationId);
       cancelAnimationFrame(currentVisualiser.currentAnimationId);
-      $('#visualiser-canvas').empty();
+      console.log($('#visualiser-canvas').empty());
     } catch(err) {
+      console.log(err);
       console.log('no id');
     }
   };
-  $( "#controllsList form").hide();
-
+  $("#controllsList form").hide();
+  $("#sunflareControls").show();
   $( "#visualisers_list" ).on('change', function(){
-    console.log('changing');
     if ($( "#visualisers_list option:selected" ).val() == 'lines'){ $( "#controllsList form").hide(); $('#linesSpeedControls').show([400], 'swing'); }
     if ($( "#visualisers_list option:selected" ).val() == 'sunflare'){ $( "#controllsList form").hide(); $('#sunflareControls').show([400], 'swing'); }
     if ($( "#visualisers_list option:selected" ).val() == 'cubeGrid'){ $( "#controllsList form").hide(); $('#cubeGridControls').show([400], 'swing');}
@@ -38,5 +39,50 @@ $(document).ready(function () {
     lines(getTimeDomain, getFrequencies);
   });
 
+
+  $('#cubeGridSubmit').on('click',function (event){
+    console.log(event);
+    event.preventDefault();
+    stopPrevious();
+    cubeGrid(getTimeDomain, getFrequencies);
+  });
+  // Line controls
+  $('#speedControlX').on('change', function(){
+  currrentVisualiser.speedX = parseFloat($('#speedControlX').val());
+  });
+
+  $('#speedControlY').on('change', function(){
+    currrentVisualiser.speedY = parseFloat($('#speedControlY').val());
+  });
+
+  $('#speedControlZ').on('change', function(){
+    currrentVisualiser.speedZ = parseFloat($('#speedControlZ').val());
+  });
+
+  $('#lineWidthControler').on('change', function(){
+    currrentVisualiser.lineWidth = parseFloat($('#lineWidthControler').val());
+  });
+
+  $('#backgroundColorControl').on('change', function(){
+    console.log('color change');
+    currrentVisualiser.backgroundColorController = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
+  });
+
+  // Sunflare controls
+  $('#sunflare-rotationX').on('change', function(){
+    console.log('click');
+    currentVisualiser.spinningSpeedX = parseFloat($('#sunflare-rotationX').val())/100;
+  });
+
+  $('#sunflare-rotationY').on('change', function(){
+    currentVisualiser.spinningSpeedY = parseFloat($('#sunflare-rotationY').val())/100;
+  });
+
+  $('#sunflare-size').on('change', function(){
+    currentVisualiser.sphereSize = parseFloat($('#sunflare-size').val())/100;
+  });
+
 });
+
+
 

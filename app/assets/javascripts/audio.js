@@ -55,9 +55,6 @@ $(document).ready(function () {
   // Function that runs when #player audio is playing sound =).
   $('#player audio').on('playing', function () {
     // frequency data console log
-    setInterval(function () {
-      console.log(Sound.getFrequencyDomain());
-    }, 500);
   })
 
   // ------------- FILE DRAG & DROP ------------------- //
