@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   resources :users
-  resources :sessions
+  resources :sessions, only: [:create, :destroy]
   resources :pages
   root :to => 'pages#index'
-  get '/login' => 'session#new'
-  post '/login' => 'session#create'
-  delete '/login' => 'session#destroy'
 end

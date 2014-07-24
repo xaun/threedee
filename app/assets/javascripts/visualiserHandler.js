@@ -18,13 +18,13 @@ $(document).ready(function(){
   };
   // Visual click listeners
   $('#lines').on('click',function(){
-    console.log(currentAnimationId);
+    // console.log(currentAnimationId);
     stopPrevious();
     lines();
   });
 
   $('#sunflare').on('click',function(){
-    console.log(currentAnimationId);
+    // console.log(currentAnimationId);
     stopPrevious();
     sunFlare(getTimeDomain, getFrequencies);
   });

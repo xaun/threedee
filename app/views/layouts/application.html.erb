@@ -16,6 +16,17 @@
           allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20">Fork Me!</iframe>
       </div>
       <%== smartnav %>
+      <div class="sign-in-form">
+        <%== form_tag(sessions_path, :id => "sign-in-fuck", :method => :post, remote: true) do %>
+          <%= label :username, "USERNAME" %>
+          <%= text_field_tag :username %>
+
+          <%= label :password, "PASSWORD" %>
+          <%= password_field_tag :password %>
+
+          <%= submit_tag "Sign In" %>
+        <% end %>
+      </div>
     </header>
     <%= yield %>
   </div><!--/////////////////////////close container //////////-->
