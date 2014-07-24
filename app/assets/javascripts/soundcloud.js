@@ -1,25 +1,25 @@
+$(document).ready(function () {
 
-
-
-
-
-$('#soundcloud-url input').keypress(function (e) {
-  var key = e.which;
-  if(key == 13) {
-    console.log('hello' + key)
-    var trackUrl = $('#soundcloud-url input').val();
-    $.get('http://api.soundcloud.com/resolve.json?url=' + trackUrl + '&client_id=ad246bea735d1371bb0416e34ec114a1',
-    function (result) {
-      Sound.audio0.pause();
-      Sound.audio0.currentTime = 0;
-      Sound.createAudioObject();
-      Sound.audio0.src = result.stream_url;
-
-      // Sets the audio player with the source and file type
-      $('source').remove();
-      var $source = $('<source></source>');
-      $source.attr('src', Sound.audio0.src);
-      $('audio').append($source).get(0).load();
+  $('#soundcloud-url input').keypress(function (e) {
+    var key = e.which;
+    console.log('key pressed', key);
+    if(key == 13) {
+      var trackUrl = $('#soundcloud-url input').val().trim();
+      var soundCloudUrl = 'http://api.soundcloud.com/resolve.json';
+      var client_id = '6e96cfcaf224ae79b356dbd500932604';
+      $.ajax({
+        url: soundCloudUrl,
+        dataType: 'json',
+        data: {
+          url: trackUrl,
+          client_id: client_id
+        },
+        success: function (result) {
+          Sound.audio0.pause();
+          Sound.audio0.src = result.stream_url + '?client_id=' + client_id;
+          Sound.audio0.play();
+        }
     });
-  }
+    }
+  });
 });

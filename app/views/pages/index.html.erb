@@ -7,14 +7,13 @@
   <div id="soundcloud-url">
     <p>Find a track on http://www.soundcloud.com and paste the URL below in the following format: http://soundcloud.com/artist/track</p>
     <input type="url" placeholder="Paste Soundcloud URL here (http://soundcloud.com/artist/track)">
-  </div>
+  </div><!--///////////// close soundcloud-url ////////-->
 
-  <div id="player">
-    <audio controls="controls">
-      <source src="/audio/MakeYouWanna.mp3" type="audio/mpeg"></source>
-    </audio>
-  </div>
+  <div id="visualiser-canvas"></div><!--///////////close visualiser ////////-->
+
+  <div id="player"></div><!--//////////// player //////////-->
 </div>
+
 
 <div id="sidebar-container">
   <div class="sound-panel">
@@ -29,7 +28,7 @@
     </a>
     <div id="mp3-drop-menu">MP3 DROP</div>
     <div id="soundcloud-menu">SOUNDCLOUD URL</div>
-  </div>
+  </div><!--///////////// close sound-panel ////////-->
 
   <div class="vis-panel">
     <a class="vis-tab" href="#">
@@ -43,30 +42,46 @@
     </div>
     </a>
 
-    <button id="sunflare">S</button>
-    <button id="lines">L</button>
-    <button id="emitter">E</button>
-    <button id="galaxy">G</button>
-    <button id="cubeGrid">C</button>
-    <button id="flat">F</button>
+      <select name="visualisers" id="visualisers_list">
+      <option value="sunflare">sunflare</option>
+      <option value="lines">lines</option>
+      <option value="cubeGrid">cubeGrid</option>
+      </select><!--///////////// close select menu ////////-->
 
-    <div id="form-wrap">
-      <p>
-        Hard charged and convinced it's contagious<br>
-        Put away in a box like a beast<br>
-        Sweat salt watch my back<br>
-        Like a crime boss<br>
-        My life's blood siphoned out of me<br>
-        Take my power and trade it away<br>
-        Now I live in Kryptonite<br>
-        Do what I must to have it again<br>
-        And I'll explode the planet tonight
-      </p>
-    </div>
-  </div>
-</div>
+     <div id="controllsList">
+      <form id="linesSpeedControls">
+        <ul>
+          <li>SpeedX:<input type="range" id="speedControlX" name="speedControlX" min="-3.9" max="10.0"></li>
+          <li>SpeedY:<input type="range" id="speedControlY" name="speedControlY" min="-3.9" max="10.0"></li>
+          <li>SpeedZ:<input type="range" id="speedControlZ" name="speedControlZ" min="-3.9" max="10.0"></li>
+          <li>Line Thickness: <input type="range" id="lineWidthControler" name="lineWidthControler" min="-0.9" max="10.0"></li>
+          <li>Background Color: <input type="color" id="backgroundColorControl" name="backgroundColorControl"></li>
+          <input type="submit" id="linesSubmit">
+        </ul>
+      </form><!--////////////////// close form linesSpeedControls//////////-->
+
+      <form id="sunflareControls">
+        <ul>
+          <li>SpeedX: <input type="range" id="speedControlX" name="speedControlX" min="-3.9" max="10.0"></li>
+          <li>SpeedY: <input type="range" id="speedControlY" name="speedControlY" min="-3.9" max="10.0"></li>
+          <li>SpeedZ: <input type="range" id="speedControlZ" name="speedControlZ" min="-3.9" max="10.0"></li>
+          <li>Background Color: <input type="color" id="backgroundColorControl" name="backgroundColorControl"></li>
+          <input type="submit" id="sunflareSubmit">
+        </ul>
+      </form><!--////////////////// close form sunflareControls//////////-->
+
+      <form id="cubeGridControls">
+        <ul>
+          <li>SpeedX: <input type="range" id="speedControlX" name="speedControlX" min="-3.9" max="10.0"></li>
+          <li>SpeedY: <input type="range" id="speedControlY" name="speedControlY" min="-3.9" max="10.0"></li>
+          <li>SpeedZ: <input type="range" id="speedControlZ" name="speedControlZ" min="-3.9" max="10.0"></li>
+          <li>Background Color: <input type="color" id="backgroundColorControl" name="backgroundColorControl"></li>
+          <input type="submit" id="cubeGridSubmit">
+        </ul>
+      </form><!--////////////////// close form cubeGridControls//////////-->
+    </div><!--////////////////// close controllsList //////////-->
+  </div><!--///////////// close vis-panel ////////-->
 
 </div><!--///////////// close sidebar-container ////////-->
-<div id="visualiser"></div><!--///////////close visualiser ////////-->
 
 

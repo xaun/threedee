@@ -70,3 +70,54 @@
 #soundcloud-url input {
   width: 370px;
 }
+
+/*////////////////////////////// visualiser styles //////////////////*/
+
+#visualiser {
+  width: 100%;
+}
+
+/*////////////////////////////// form styles //////////////////*/
+
+#controllsList{
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+#controllsList ul{
+  padding: 0px;
+}
+
+#controllsList ul{
+  list-style: none;
+}
+
+input[type='range']{
+  -webkit-appearance: none;
+    border-radius: 0.5px;
+    box-shadow: inset 0 0 1px #333;
+    background-color: #A7EBF0;
+    height: 1px;
+    vertical-align: middle;
+    box-shadow: 1px 1px 1px 1px rgba(42, 40, 107, 1);
+}
+input[type='range']::-moz-range-track {
+    -moz-appearance: none;
+    border-radius:0.5px;
+    box-shadow: inset 0 0 1px #333;
+    background-color: #A7EBF0;
+    height: 1px;
+    box-shadow: 0 0 5px 5px rgba(42, 40, 107, 1);
+  }
+
+input[type="range"]::-webkit-slider-thumb {
+     -webkit-appearance: none;
+    background-color: #666;
+    opacity: 1;
+    width: 5px;
+    height: 15px;
+}
+
+
+
+

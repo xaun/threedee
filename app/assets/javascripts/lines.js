@@ -1,14 +1,16 @@
-// Set up the scene, camera, and renderer as global variables.
-function lines() {
+function lines(getTimeDomain, getFrequencies) {
   // var camera;
   var lines = []; //Global array for animated elements
   var lines2 = []; //Global array for animated elements
   // colors = [[255,0,0],[255,230,255],[255,0,213]];
-  var lineWidth = .2;
-  var speedX = 0.1;
-  var speedY = 0.1;
-  var speedZ = 1;
-  backgroundColorControler = 0xFFFFFF;
+  // Set up the scene, camera, and renderer as global variables.
+  var attribs = {
+    lineWidth: .2,
+    speedX: 0.1,
+    speedY: 0.1,
+    speedZ: 1,
+    backgroundColorController: 0xFFFFFF
+  }
   // Sets up the scene.
   function init() {
 
@@ -21,8 +23,7 @@ function lines() {
     renderer = new THREE.WebGLRenderer({antialias:true});
     renderer.shadowMapEnabled = true; //Needs to be enabled for shadows
     renderer.setSize(WIDTH, HEIGHT);
-    $('#container').empty();
-    $('#container').append(renderer.domElement);
+    $('#visualiser-canvas').append(renderer.domElement);
 
     //add fog to the scene. zoom in and out gets brighter and darker. delete if you want
     // scene.fog = new THREE.FogExp2( 0x000000, .0235 );
@@ -33,7 +34,7 @@ function lines() {
     //.PerspectiveCamera (zoom, )
     camera.position.set(281.5454554532732, 20.717505604326544, 19.709799474934318);
     scene.add(camera);
-    renderer.setClearColor( backgroundColorControler, 0 ); // the default
+    renderer.setClearColor( attribs.backgroundColorController, 0 ); // the default
 
     // Create an event listener that resizes the renderer with the browser window.
     $(window).on('resize', function() {
@@ -85,7 +86,7 @@ function lines() {
     var lineMaterial = new THREE.LineBasicMaterial({
       // color: "rgb("+r+","+g+","+b+")"
       color: "rgb("+r+","+g+","+b+")",
-      linewidth: lineWidth
+      linewidth: attribs.lineWidth
     });
     // console.log(lineMaterial);
     var lineGeometry = new THREE.Geometry();
@@ -166,11 +167,9 @@ function lines() {
 
   // Renders the scene and updates the render as needed.
   function animate() {
-    renderer.setClearColor( backgroundColorControler, 0 ); // the default
-    if (playing){
-      getData();
-    };
-    currentAnimationId = requestAnimationFrame(animate);
+    renderer.setClearColor( attribs.backgroundColorController, 0 ); // the default
+    getData();
+    attribs.currentAnimationId = requestAnimationFrame(animate);
     renderer.render(scene, camera);
     controls.update();
     cameraCheck();
@@ -178,9 +177,9 @@ function lines() {
     // lines movement
     for ( var i = 0; i< lines.length; i++){
       var line = lines[i];
-      line.position.x += speedX;
-      line.position.y += speedY;
-      line.position.z += speedZ;
+      line.position.x += attribs.speedX;
+      line.position.y += attribs.speedY;
+      line.position.z += attribs.speedZ;
       // line.position.y += -0.1;
     }
 
@@ -203,20 +202,19 @@ function lines() {
   //   // return parseInt(result);
   // }
 
-  $('#speedControls').on('submit', function(event) {
-    event.preventDefault();
-    speedX = parseFloat($('#speedControlX').val());
-    speedY = parseFloat($('#speedControlY').val());
-    speedZ = parseFloat($('#speedControlZ').val());
-    lineWidth = parseFloat($('#lineWidthControler').val());
-    backgroundColorControler = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
-  });
+  // Testing on controls
+  // $('#speedControls').on('submit', function(event) {
+  //   event.preventDefault();
+  //   attribs.speedX = parseFloat($('#speedControlX').val());
+  //   speedY = parseFloat($('#speedControlY').val());
+  //   speedZ = parseFloat($('#speedControlZ').val());
+  //   lineWidth = parseFloat($('#lineWidthControler').val());
+  //   backgroundColorControler = parseInt($('#backgroundColorControl').val().slice(1,7), 16);
+  // });
 
   init();
-  // backgroundColor = 0xFFFFFF;
-  lineWidth = 3;
+  // backgroundColor = 0xFFFFFFF
   animate();
-
-
+  currrentVisualiser = attribs;
 }
 
