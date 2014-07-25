@@ -3,6 +3,7 @@
   position: relative;
   right: -610px;
   padding-top: 5px;
+  display: none;
 }
 
 .sign-in-form-animate {
