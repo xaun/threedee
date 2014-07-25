@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
     user = User.find_by(:username => params[:username])
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      @user
-      render json: user.username
+      render json: user
     else
       redirect_to login_path
     end
@@ -21,7 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path
+    render json: @current_user
   end
 
   private
