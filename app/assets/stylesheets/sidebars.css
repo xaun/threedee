@@ -45,6 +45,7 @@ a.sound-tab span {
 /* visual panel*/
 .vis-panel {
   width: 250px;
+  height: 346px;
   background: #2F3030;
   position: absolute;
   top: 100px;

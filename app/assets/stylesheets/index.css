@@ -133,7 +133,7 @@ select, input[type="color"][list] {
 }
 
 #sunflareSubmit, #sunflare-save, #linesSubmit, #lines-save, #cubeGridSubmit, #cubegrid-save {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 #sunflareSubmit:active, #sunflare-save:active, #linesSubmit:active, #lines-save:active {
@@ -153,8 +153,25 @@ select, input[type="color"][list] {
   list-style: none;
 }
 
-#cube-strength, #cube-backcolor, #line-thick, #line-backcolor {
+#cube-strength, #cube-backcolor, #line-thick, #line-backcolor, #cube-text, #cube-textcolor {
   margin-left: 28px;
+}
+
+#cubeBackgroundColorControl, #cubeText3dColor, #backgroundColorControl {
+  padding: 0 0 0 0;
+  margin-bottom: 5px;
+}
+
+#cubeText3dColor {
+  margin-left: 48px;
+}
+
+#cubeYourText {
+  border: 0px;
+  border-radius: 5px;
+  padding: .3em;
+  margin-bottom: 5px;
+  margin-left: 13px;
 }
 
 input[type='range']{
