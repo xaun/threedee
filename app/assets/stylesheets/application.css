@@ -73,3 +73,10 @@ body {
 #sign-in-link {
   border-left: 1px solid #B9BFBD;
 }
+
+footer {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  padding-left: 10px;
+}

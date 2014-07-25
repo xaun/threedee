@@ -1,12 +1,19 @@
 <div class="index-container">
-  <div id="drop-zone"></div>
+  <div id="drop-zone">
+    <h2>Drag n' Drop!</h2>
+    <h4>Supported file types: mp3, wav, aiff, or ogg</h4>
+  </div>
   <p id="upload" class="hidden">
     <label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label>
   </p>
 
   <div id="soundcloud-url">
-    <p>Find a track on http://www.soundcloud.com and paste the URL below in the following format: http://soundcloud.com/artist/track</p>
-    <input type="url" placeholder="Paste Soundcloud URL here (http://soundcloud.com/artist/track)">
+    <h2>Soundcloud Paste n' Play!</h2>
+    <div id="sc-url-content">
+      <p>Find a track on <a href="http://www.soundcloud.com">http://www.soundcloud.com</a> and paste the URL below in the following format: http://soundcloud.com/artist/track.</p>
+      <input type="url" placeholder="(http://soundcloud.com/artist/track)">
+      <p class="disclaimer">Soundcloud playlist links are currently not supported and will break. Sorry.</p>
+    </div>
   </div><!--///////////// close soundcloud-url ////////-->
 
   <div id="visualiser-canvas"></div><!--///////////close visualiser ////////-->
