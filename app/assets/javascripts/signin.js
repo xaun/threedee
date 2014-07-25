@@ -15,11 +15,6 @@ $(document).ready(function() {
     $('#inner-nav').append(a)
   })
 
-  $('#new_task').on('ajax:success', function (task) {
-    $('#new_task').get(0).reset();
-    add_marker(task.latitude, task.longitude, task.title)
-  });
-
   $("#inner-nav").on('click',"#logout", function() {
     $.ajax({
       url: '/sessions/' + user_id,
@@ -31,4 +26,5 @@ $(document).ready(function() {
       }
     });
   });
+
 });
