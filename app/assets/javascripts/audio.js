@@ -9,7 +9,7 @@ window.AudioContext = (function (){
 var Sound = {
   audioContextSetup: function () {
     try {
-      Sound.audioContext = new webkitAudioContext() || new mozAudioContext();
+      Sound.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     } catch(e) {
       alert('Web Audio API is not supported in this browser');
     }
