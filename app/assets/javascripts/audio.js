@@ -50,12 +50,15 @@ $(document).ready(function () {
   Sound.createAudioObject();
   Sound.setupAudioNodes();
   Sound.connectAudioNodes();
-  $('#player').append(Sound.sourceNode.mediaElement);
+  $('#player').append(Sound.audio0);
 
-  // Function that runs when #player audio is playing sound =).
-  $('#player audio').on('playing', function () {
-    // frequency data console log
-  })
+  // // Function that runs when #player audio is playing sound =).
+  // $('#player audio').on('playing', function () {
+  //   // frequency data console log
+  //   setInterval(function() {
+  //     console.log(Sound.getFrequencyDomain());
+  //   }, 500);
+  // })
 
   // ------------- FILE DRAG & DROP ------------------- //
   // reference source for code = http://html5demos.com/dnd-upload#view-source
