@@ -32,6 +32,8 @@ gem 'rails_12factor', group: :production
 
 gem 'jquery-ui-rails'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 group :development do
   gem 'pry-rails'
   gem 'better_errors'
