@@ -147,6 +147,9 @@ $(document).ready(function () {
     }
   });
 
+  // Quick and dirty hack to get this visualiser on window load.
+  stopPrevious();
+  lines(getTimeDomain, getFrequencies);
 });
 
 
