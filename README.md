@@ -14,6 +14,6 @@ This website uses Javascript, jQuery, the Web Audio API, THREE.js and the Soundc
 - Live audio source input (Guitar, etc)!!!!!
 
 ## Team & Thanks
-This was a group project, if you liked this work be sure to check out my teams profiles: [Allen Hsu](https://github.com/aldhsu), [Daisy Smith](#), [Thomas Mitchell](https://github.com/tmitche831).
+This was a group project, if you liked this work be sure to check out my teams profiles: [Allen Hsu](https://github.com/aldhsu), [Daisy Smith](https://github.com/daisymarie128), [Thomas Mitchell](https://github.com/tmitche831).
 
 Also, massive thanks to Joel Turnbull & Daniel Tsui for all help.
