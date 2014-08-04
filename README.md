@@ -7,7 +7,9 @@ You can check it out here: tadx-3dsound.herokuapp.com
 This website uses Javascript, jQuery, the Web Audio API, THREE.js and the Soundcloud API. The back-end is managed by Rails.
 
 ## Todo
-- Merge this project with my Soundcloud player website 'CloudChaser'. When you search Soundcloud for music, you can switch over to a visualiser!
+- Merge this project with my Soundcloud player website [CloudChaser](http://cloudchaser.herokuapp.com). When you search Soundcloud for music, you can switch over to a visualiser!
+- Endless aims to improve 3D visuals
+- Fix it so the a default visualiser starts when the HTML5 Audio Player starts, its currently silently running in the background forcing high CPU usage.
 
 ## Team & Thanks
 This was a group project, if you liked this work be sure to check out my teams profiles: [Allen Hsu](https://github.com/aldhsu), [Daisy Smith](#), [Thomas Mitchell](https://github.com/tmitche831).
