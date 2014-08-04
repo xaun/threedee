@@ -1,13 +1,5 @@
 # Playing Audio Files & Real-time Frequency Analysis
 
-## `<audio>` html5 tag limitation
-- No precise timing controls
-- Very low limit for the number of sounds played at once
-- No way to reliably pre-buffer a sound
-- No ability to apply real-time effects
-- No way to analyze sounds
-
-
 ## types of webaudio nodes
 #### Source nodes
 - Sound sources such as audio buffers, live audio inputs, <audio> tags, oscillators, and JS processors(ScriptProcessorNode).
@@ -49,8 +41,7 @@ Bitrate is a measure of data throughput in a given amount of time. Simply put, i
 ## Audio Context
 In order to start using the API, we must first create an AudioContext. Think of this as a **canvas for sound**. It’s a container for all the playback and manipulation of audio we’re going to be doing. We create it by simply doing this:
 ```
-var context = new webkitAudioContext();
-    // We use the "webkit" prefix as the API isn't a standard yet
+var audioContext = new (window.AudioContext || window.webkitAudioContext)();
 ```
 
 
@@ -69,7 +60,7 @@ The actual number of bins (bands) in this example would be 16. As it is divided 
 
 
 ## Creating an Audio Object
-This is fairly self explainitory:
+Great feature for using an audio object is that it can be rendered to the DOM in the form a HTML5 Audio Player!
 ```
 // creating an Audio object
   var audio0 = new Audio();
@@ -79,6 +70,10 @@ This is fairly self explainitory:
   audio0.loop = true;
 ```
 
+## HTML5 Audio Player
+Appending an Audio() object to the DOM:
+
+`$('#empty-div').append(Sound.audio0);`
 
 ## Creating the Source, and connecting the nodes.
 
@@ -136,86 +131,6 @@ $(".stop").on('click', function() {
     clearInterval(samplerID);
   });
 
-```
-
-
-# 2D canvas visualiser
-
-## Setting up the Canvas
-```
-<canvas id="canvas" width="512" height="256" ></canvas>
-<style>
-  #canvas {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    background-color: black;
-  }
-  #controls, h1 {
-    text-align: center;
-  }
-  #start, #stop {
-    font-size: 16pt;
-  }
-</style>
-```
-
-## Setting the rendering context / canvas context
-
-```
-// 2D rendering context for a drawing surface of a `<canvas>` element.
-var ctx = $("#canvas")[0].getContext("2d");
-```
-
-
-## Script Processor Node
-This interface is an AudioNode which can generate, process, or analyse audio directly using JavaScript.
-
-```
-var javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
-```
-- Often named javascriptNode.
-
-This node also need to be connected to the analyserNode and the destination:
-```
-analyserNode.connect(javascriptNode);
-javascriptNode.connect(audioContext.destination);
-```
-
-## Drawing Function
-
-```
-var canvasWidth  = 512;
-var canvasHeight = 256;
-var drawTimeDomain = function() {
-  clearCanvas();
-  for (var i = 0; i < amplitudeArray.length; i++) {
-    var value = amplitudeArray[i] / 256;
-    var y = canvasHeight - (canvasHeight * value) - 1;
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(i, y, 1, 1);
-  }
-};
-
-var clearCanvas = function() {
-  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-};
-```
-
-## Start audio & draw
-
-```
-// Play sound & visualise
-$("#start").on('click', function() {
-  audio0.play();
-  // An event listener which is called periodically for audio processing.
-  javascriptNode.onaudioprocess = function () {
-    // Get the Time Domain data for this sample
-    analyserNode.getByteTimeDomainData(amplitudeArray);
-    // Draw..
-    requestAnimFrame(drawTimeDomain);
-  }
-});
 ```
 
 

@@ -10,6 +10,8 @@ This website uses Javascript, jQuery, the Web Audio API, THREE.js and the Soundc
 - Merge this project with my Soundcloud player website [CloudChaser](https://github.com/xaun/soundcloudplayer). When you search Soundcloud for music, you can switch over to a visualiser!
 - Endless aims to improve 3D visuals
 - Fix it so the a default visualiser starts when the HTML5 Audio Player starts, its currently silently running in the background forcing high CPU usage.
+- Microphone Input
+- Live audio source input (Guitar, etc)!!!!!
 
 ## Team & Thanks
 This was a group project, if you liked this work be sure to check out my teams profiles: [Allen Hsu](https://github.com/aldhsu), [Daisy Smith](#), [Thomas Mitchell](https://github.com/tmitche831).
