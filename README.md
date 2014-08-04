@@ -1,7 +1,7 @@
 ## Threedee
 Threedee is an interactive music visualizer combining the Web Audio API and the THREE.js library to create shapes in your browser and make them respond to a song, drag an MP3 or link a song from Soundcloud.
 
-You can check it out here: tadx-3dsound.herokuapp.com
+You can check it out here: [Threedee](http://tadx-threedee.herokuapp.com/)
 
 ## Toolkit
 This website uses Javascript, jQuery, the Web Audio API, THREE.js and the Soundcloud API. The back-end is managed by Rails.
