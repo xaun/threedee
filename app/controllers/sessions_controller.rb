@@ -7,20 +7,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # raise params.inspect
+    # binding.pry
     user = User.find_by(:username => params[:username])
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: user
+      render json: user, :include => {:settings => {:only => [:visualiser_id, :settings]}}
     else
-      redirect_to login_path
+      render json: "Error"
     end
-
   end
 
   def destroy
     session[:user_id] = nil
-    render json: @current_user
+    render nothing: true
   end
 
   private

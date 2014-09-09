@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // Helpers
   var getTimeDomain = function() {
     return Sound.getTimeDomain();
   };
@@ -6,18 +7,35 @@ $(document).ready(function () {
   var getFrequencies = function() {
     return Sound.getFrequencyDomain();
   };
-
+  // Settings helpers
   var getValues = function(id) {
+    var settingHash = {};
+    settingHash["visualiser"] = id;
+    settingHash["setting"] = {}
     _.each($(id + ' input'), function(ele) {
-      console.log($(ele).val())
+      console.log($(ele).context.type)
+      $ele = $(ele)
+      if ($ele.context.type != 'submit') {
+        settingHash["setting"][$ele.context.id] = $ele.val();
+      }
+    })
+
+    return {settings: settingHash};
+  }
+  var sendValues = function(data) {
+    $.ajax({
+      url: '/settings',
+      type: 'POST',
+      dataType: 'json',
+      data: data,
+      success: function(xhr, data) {
+        console.log(data);
+      }
     })
   }
-  var currentAnimationId;
-
-  function stopPrevious () {
+  // made this a dirty global
+  stopPrevious = function () {
     try{
-      console.log(currentVisualiser);
-      console.log(currentVisualiser.currentAnimationId);
       cancelAnimationFrame(currentVisualiser.currentAnimationId);
       console.log($('#visualiser-canvas').empty());
     } catch(err) {
@@ -138,18 +156,19 @@ $(document).ready(function () {
     event.preventDefault();
     switch (event.target.id) {
       case "sunflare-save":
-        getValues('#sunflare')
+        sendValues(getValues('#sunflareControls'));
         break;
       case "lines-save":
+        sendValues(getValues('#linesSpeedControls'));
         break;
       case "cubegrid-save":
+        sendValues(getValues('#cubeGridControls'));
         break;
     }
   });
 
-  // Quick and dirty hack to get this visualiser on window load.
-  stopPrevious();
-  lines(getTimeDomain, getFrequencies);
+  // stopPrevious();
+  // lines(getTimeDomain, getFrequencies);
 });
 
 

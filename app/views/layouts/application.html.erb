@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Threedee</title>
+  <title>ThreeDee</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'http://connect.soundcloud.com/sdk.js' %>
@@ -20,7 +20,7 @@
 
       <%== smartnav %>
       <div class="sign-in-form">
-        <%= form_tag(sessions_path, :id => "sign-in-fuck", :method => :post, remote: true) do %>
+        <%= form_tag(sessions_path, :id => "sign-in-ajax", :method => :post, remote: true) do %>
           <%= text_field_tag :username, nil, :placeholder => "Username" %>
 
           <%= password_field_tag :password, nil, :placeholder => "Password" %>

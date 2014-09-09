@@ -9,7 +9,7 @@ window.AudioContext = (function (){
 var Sound = {
   audioContextSetup: function () {
     try {
-      Sound.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      Sound.audioContext = new webkitAudioContext();
     } catch(e) {
       alert('Web Audio API is not supported in this browser');
     }
@@ -45,19 +45,24 @@ var Sound = {
 
 $(document).ready(function () {
 
+
+
+
+  $('#popUpDiv #popup').on('click', function(){
+    $('#popUpDiv').fadeOut(2000);
+  })
+
   // Initial Audio setup
   Sound.audioContextSetup();
   Sound.createAudioObject();
   Sound.setupAudioNodes();
   Sound.connectAudioNodes();
-  $('#player').append(Sound.audio0);
+  $('#player').append(Sound.sourceNode.mediaElement);
 
-  // // Function that runs when #player audio is playing sound =).
-  // $('#player audio').on('playing', function () {
-  //   setInterval(function() {
-  //     console.log(Sound.frequencyArray);
-  //   }, 500);
-  // })
+  // Function that runs when #player audio is playing sound =).
+  $('#player audio').on('playing', function () {
+    // frequency data console log
+  })
 
   // ------------- FILE DRAG & DROP ------------------- //
   // reference source for code = http://html5demos.com/dnd-upload#view-source

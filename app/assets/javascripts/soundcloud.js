@@ -6,7 +6,7 @@ $(document).ready(function () {
     if(key == 13) {
       var trackUrl = $('#soundcloud-url input').val().trim();
       var soundCloudUrl = 'http://api.soundcloud.com/resolve.json';
-      var client_id = 'a0d7b59edbf8875dcfa445422ba036ea';
+      var client_id = '6e96cfcaf224ae79b356dbd500932604';
       $.ajax({
         url: soundCloudUrl,
         dataType: 'json',
